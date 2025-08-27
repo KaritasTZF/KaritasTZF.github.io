@@ -1,0 +1,11 @@
+.wrapper {
+    display: flex; flex-direction: column; gap: 10px;
+}
+
+.question {
+    display: flex; flex-direction: row; gap: 20px;
+}
+
+.skjaskot {
+    max-width: 300px;
+}
