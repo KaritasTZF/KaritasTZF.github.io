@@ -32,16 +32,22 @@ window.onload = function init() {
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
     
-	// Create the circle
     createCirclePoints( center, radius, numCirclePoints );
 
     var vBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, 8*251*2, gl.STATIC_DRAW);
     
     var vPosition = gl.getAttribLocation(program, "vPosition");
     gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vPosition);
+
+    // get slider value
+    document.getElementById("slider").onchange = function(event) {
+        numCirclePoints = event.target.value;
+        document.getElementById("output").value = numCirclePoints;
+        render();
+    };
     
     render();
 }
@@ -51,7 +57,7 @@ window.onload = function init() {
 function createCirclePoints( cent, rad, k )
 {
     points = [];
-    points.push( center );
+    points.push( cent );
     
     var dAngle = 2*Math.PI/k;
     for( i=k; i>=0; i-- ) {
@@ -63,8 +69,14 @@ function createCirclePoints( cent, rad, k )
 
 function render() {
     
+    points = [];
+    createCirclePoints( center, radius, numCirclePoints );
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
+    console.log(flatten(points));
+
     gl.clear( gl.COLOR_BUFFER_BIT );
-    
+
     // Draw circle using Triangle Fan
-    gl.drawArrays( gl.TRIANGLE_FAN, 0, numCirclePoints+2 );
+    gl.drawArrays( gl.TRIANGLE_FAN, 2, numCirclePoints );
+    points = [];
 }
