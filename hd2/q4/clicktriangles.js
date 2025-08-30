@@ -9,7 +9,7 @@ var canvas;
 var gl;
 
 // Þarf hámarksfjölda punkta til að taka frá pláss í grafíkminni
-var maxNumPoints = 200;  
+var maxNumPoints = 204;  
 var index = 0;
 
 window.onload = function init() {
@@ -42,10 +42,15 @@ window.onload = function init() {
         gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer);
         
         // Calculate coordinates of new point
-        var t = vec2(2*e.offsetX/canvas.width-1, 2*(canvas.height-e.offsetY)/canvas.height-1);
-        
-        // Add new point behind the others
-        gl.bufferSubData(gl.ARRAY_BUFFER, 8*index, flatten(t));
+        var middle = vec2(2*e.offsetX/canvas.width-1, 2*(canvas.height-e.offsetY)/canvas.height-1);
+        var points = [
+            add(middle, vec2(0, 0.05 )),
+            add(middle, vec2(0.05, -0.05 )),
+            add(middle, vec2(-0.05, -0.05 ))
+        ]
+
+        // Add new points behind the others
+        gl.bufferSubData(gl.ARRAY_BUFFER, 8*3*index, flatten(points));
 
         index++;
     } );
@@ -57,7 +62,7 @@ window.onload = function init() {
 function render() {
     
     gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.POINTS, 0, index );
+    gl.drawArrays( gl.TRIANGLES, 0, index*3 );
 
     window.requestAnimFrame(render);
 }
