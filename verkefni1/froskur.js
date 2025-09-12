@@ -1,6 +1,9 @@
 var canvas;
 var gl;
 
+var maxX = 1.0; //plusminus
+var maxY = 1.0; //plusminus
+
 // Upphafsstaða frosksins
 var verticesFrog = new Float32Array([-0.05,-0.05, 0.05,-0.05, 0,0.05]);
 
@@ -14,10 +17,10 @@ var verticesLanes = new Float32Array([
 
 // Hnit bíla
 var verticesCars;
-var carX = new Float32Array([0.5, 0.5, 0.95]); // changes
-var carY = new Float32Array([0.4, 0.0, -0.4]); // middle of lane
-var carSpeed = [0.03, 0.02, 0.01];
-var carFj = 3; // Fjöldi bíla
+var carX; // changes
+var carY = new Float32Array([0.4, 0.0, -0.4, 0.0]); // middle of lane
+var carSpeed = [0.03, 0.02, 0.01, 0.02];
+var carFj = 4; // Fjöldi bíla
 var carHalfHeight = (0.4 -0.1)/2;
 var carHalfLength = carHalfHeight*1.8;
 
@@ -42,6 +45,7 @@ window.onload = function init()
     //
     // Initialize starting values of variables
     //
+    carX = new Float32Array([Math.random()*2.0-1.0, Math.random()*0.46+carHalfLength, Math.random()*2.0-1.0, Math.random()*0.45-1.0-carHalfLength]);
 
     var helpHnit = new Array(carFj*4);
     for (var i = 0; i < carFj; ++i ) {
@@ -93,10 +97,14 @@ function render() {
     gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
     // for each car, update x position
     for (var i = 0; i < carFj; ++i ) {
-        carX[i] -= carSpeed[i]; // update car x position
+        // check out of bounds
+        if (-(carX[i] + carSpeed[i]) > maxX + carHalfLength) carX[i] = 1.0 + carHalfLength;
+
+        // update car x position
+        carX[i] -= carSpeed[i];
         var offset = new Float32Array([carX[i], carY[i]]);
-        console.log(offset);
         gl.uniform2fv( locOffset, offset );
+
         gl.uniform4fv( locColor, flatten(vec4(0.75, 0.0+i*0.2, 1.0-i*0.2, 1.0)) );
         gl.drawArrays(gl.TRIANGLE_FAN, i*4, 4);
     }
