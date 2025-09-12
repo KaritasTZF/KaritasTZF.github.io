@@ -15,12 +15,11 @@ var verticesLanes = new Float32Array([
     1.0,-0.6, -1.0,-0.6 
 ]);
 
-// Hnit bíla
-var verticesCars;
-var carX; // changes
-var carY = new Float32Array([0.4, 0.0, -0.4, 0.0]); // middle of lane
-var carSpeed = [0.03, 0.02, 0.01, 0.02];
+var verticesCars; // Hnit bíla
 var carFj = 4; // Fjöldi bíla
+var carX = new Float32Array(carFj); // changes
+var carY = new Float32Array(carFj); // middle of lane
+var carSpeed = new Float32Array(carFj);
 var carHalfHeight = (0.4 -0.1)/2;
 var carHalfLength = carHalfHeight*1.8;
 
@@ -45,18 +44,7 @@ window.onload = function init()
     //
     // Initialize starting values of variables
     //
-    carX = new Float32Array([Math.random()*2.0-1.0, Math.random()*0.46+carHalfLength, Math.random()*2.0-1.0, Math.random()*0.45-1.0-carHalfLength]);
-
-    var helpHnit = new Array(carFj*4);
-    for (var i = 0; i < carFj; ++i ) {
-        helpHnit[i] = [
-            vec2( - carHalfLength, - carHalfHeight),
-            vec2( - carHalfLength, + carHalfHeight),
-            vec2( + carHalfLength, + carHalfHeight),
-            vec2( + carHalfLength, - carHalfHeight),
-        ];
-    }
-    verticesCars = flatten(helpHnit.flat(Infinity));
+    generateCars();
 
     //
     // Load shaders
@@ -80,6 +68,25 @@ window.onload = function init()
     gl.enableVertexAttribArray( locPosition );
 
     render();
+}
+
+// Sets variables for cars, random start etc using carFj
+function generateCars() {
+    var helpHnit = new Array(carFj*4);
+    var lane;
+    for (var i = 0; i < carFj; ++i ) {
+        lane = i % 3;
+        carSpeed[i] = 0.005*(lane+1.0);
+        carX[i] = Math.random()*2.0-1.0;
+        carY[i] = (lane-1.0)*0.4;
+        helpHnit[i] = [
+            vec2( - carHalfLength, - carHalfHeight),
+            vec2( - carHalfLength, + carHalfHeight),
+            vec2( + carHalfLength, + carHalfHeight),
+            vec2( + carHalfLength, - carHalfHeight),
+        ];
+    }
+    verticesCars = flatten(helpHnit.flat(Infinity));
 }
 
 function render() {
