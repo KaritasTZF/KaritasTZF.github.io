@@ -4,23 +4,30 @@ var gl;
 var maxX = 1.0; //plusminus
 var maxY = 1.0; //plusminus
 
+var laneFj = 3; // Fjöldi akgreina
+var laneSize = 2.0/(laneFj+2.0); // stærð akgreina á canvas
+var objRad = laneSize*(1.0-0.1)/2; // stærð bíla & frosks
+
 var carFj = 3; // Fjöldi bíla
 var carX = new Float32Array(carFj); // x-hnit bíla, changes
 var carY = new Float32Array(carFj); // y-hnit bíla, middle of lane
 var carSpeed = new Float32Array(carFj);
-var carHalfHeight = (0.4 -0.1)/2;
-var carHalfLength = carHalfHeight*1.0;
+var carHalfHeight = objRad;
+var carHalfLength = objRad*1.5;
 
-var laneFj = 3; // Fjöldi akgreina
-var laneSize = 2.0/(laneFj+2.0); // stærð akgreina á canvas
+var frogRad = objRad;
+var frogPos;
+var frogDirection = 1;
 
 // buffers
 var bufferLanes;
 var bufferCars;
+var bufferFrog;
 
 var locColor;
 var locPosition;
 var locOffset;
+var locDirection;
 
 window.onload = function init()
 {
@@ -35,10 +42,10 @@ window.onload = function init()
     //
     // Initialize starting values of variables
     //
-    // vertices
-    var verticesFrog = new Float32Array([-0.05,-0.05, 0.05,-0.05, 0,0.05]);
+    var verticesFrog = new Float32Array([-frogRad,-frogRad, frogRad,-frogRad, 0,frogRad]);
     var verticesCars = generateCars();
     var verticesLanes = generateLanes();
+    frogPos = vec2(0.0, (laneSize/2.0)-maxY);
 
     //
     // Load shaders
@@ -55,11 +62,35 @@ window.onload = function init()
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferCars);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesCars), gl.DYNAMIC_DRAW);
 
+    bufferFrog = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferFrog);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesFrog), gl.DYNAMIC_DRAW);
+
     // Breytur
     locColor = gl.getUniformLocation( program, "fColor" );
     locPosition = gl.getAttribLocation( program, "vPosition" );
     locOffset = gl.getUniformLocation( program, "offset" );
+    locDirection = gl.getUniformLocation( program, "direction" );
     gl.enableVertexAttribArray( locPosition );
+
+    window.addEventListener("keyup", function(e){ 
+        switch( e.key ) {
+            case "ArrowUp":
+                frogPos[1] += laneSize;
+                frogDirection = 1;
+                break;
+            case "ArrowDown":
+                frogPos[1] -= laneSize;
+                frogDirection = -1;
+                break;
+            case "ArrowLeft":
+                frogPos[0] -= laneSize;
+                break;
+            case "ArrowRight":
+                frogPos[0] += laneSize;
+                break;
+        }
+    });
 
     render();
 }
@@ -82,7 +113,7 @@ function generateCars() {
     var lane;
     for (var i = 0; i < carFj; ++i ) {
         lane = i % laneFj;
-        carSpeed[i] = 0.005*(lane+1.0);
+        carSpeed[i] = 0.004*(lane+1.0);
         carX[i] = Math.random()*2.0-1.0;
         carY[i] = (lane-((laneFj-1.0)/2.0))*laneSize;
         helpHnit[i] = [
@@ -103,11 +134,13 @@ function render() {
     gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.uniform4fv( locColor, flatten(vec4(0.6, 0.6, 0.6, 1.0)) );
     gl.uniform2fv( locOffset, flatten(vec2(0.0,0.0)) );
+    gl.uniform1i( locDirection, 0 );
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, (laneFj+1)*2);
 
     // Setjum litinn sem fjólubláann og teiknum bílanna
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferCars);
     gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
+    gl.uniform1i( locDirection, 0 );
     // for each car, update x position
     for (var i = 0; i < carFj; ++i ) {
         // check out of bounds
@@ -123,7 +156,12 @@ function render() {
     }
 
     // Setjum litinn sem grænan og teiknum froskinn
-    //gl.uniform4fv( locColor, flatten(vec4(0.0, 1.0, 0.0, 1.0)) );
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferFrog);
+    gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
+    gl.uniform4fv( locColor, flatten(vec4(0.0, 0.8, 0.0, 1.0)) );
+    gl.uniform2fv( locOffset, flatten(frogPos) );
+    gl.uniform1f( locDirection, frogDirection );
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
     
     window.requestAnimFrame(render);
 }
