@@ -12,7 +12,7 @@ var carFj = 6; // Fjöldi bíla
 var carX = new Float32Array(carFj); // x-hnit bíla, changes
 var carY = new Float32Array(carFj); // y-hnit bíla, middle of lane
 var carSpeed = new Float32Array(carFj);
-var controlCarSpeed = 0.003;
+var controlCarSpeed = 0.003; // for difficulty
 var carColor = new Array(carFj);
 var carHalfHeight;
 var carHalfLength;
@@ -21,12 +21,13 @@ var frogRad;
 var frogPos;
 var frogDirection;
 
-var stig;
+var points;
 
 // buffers
 var bufferLanes;
 var bufferCars;
 var bufferFrog;
+var bufferPoints;
 
 var locColor;
 var locPosition;
@@ -46,7 +47,7 @@ window.onload = function init()
     //
     // Initialize starting values of variables
     //
-    stig = 0;
+    points = 0;
     laneSize  = 2.0/(laneFj+2.0);
     objRad = laneSize*(1.0-0.1)/2;
     carHalfHeight = objRad;
@@ -57,6 +58,7 @@ window.onload = function init()
     var verticesFrog = new Float32Array([-frogRad,-frogRad, frogRad,-frogRad, 0,frogRad]);
     var verticesCars = generateCars();
     var verticesLanes = generateLanes();
+    var verticesPoints = generatePoints();
 
     //
     // Load shaders
@@ -76,6 +78,10 @@ window.onload = function init()
     bufferFrog = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferFrog);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesFrog), gl.DYNAMIC_DRAW);
+
+    bufferPoints = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferPoints);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesPoints), gl.STATIC_DRAW);
 
     // Breytur
     locColor = gl.getUniformLocation( program, "fColor" );
@@ -142,9 +148,37 @@ function generateCars() {
     return new Float32Array(helpHnit.flat());
 }
 
-function die() {
+function generatePoints() {
+    var gap = laneSize - 2*objRad;
+    var upper = maxY-gap;
+    var lower = maxY+gap-(laneSize/2.0);
+    return new Float32Array([
+        -maxX + gap, upper,
+        -maxX + gap, lower,
+        -maxX+2.0*gap, upper,
+        -maxX+2.0*gap, lower,
+        -maxX+3.0*gap, upper,
+        -maxX+3.0*gap, lower,
+        -maxX+4.0*gap, upper,
+        -maxX+4.0*gap, lower,
+        -maxX+4.0*gap, upper,
+        -maxX + gap, lower,
+        -maxX+6.0*gap, upper,
+        -maxX+6.0*gap, lower,
+        -maxX+7.0*gap, upper,
+        -maxX+7.0*gap, lower,
+        -maxX+8.0*gap, upper,
+        -maxX+8.0*gap, lower,
+        -maxX+9.0*gap, upper,
+        -maxX+9.0*gap, lower,
+        -maxX+9.0*gap, upper,
+        -maxX+6.0*gap, lower
+    ]);
+}
+
+function reset() {
     frogPos = vec2(0.0, (laneSize/2.0)-maxY);
-    stig = 0;
+    points = 0;
 }
 
 function render() {
@@ -154,10 +188,11 @@ function render() {
 
     // stigagjöf
     var collisionY = (frogPos[1] - frogRad) < (maxY - laneSize);
-    if ((stig % 2 ==0 && (frogPos[1] - frogRad) > (maxY - laneSize)) ||
-        (stig % 2 ==1 && (frogPos[1] + frogRad) < (-maxY + laneSize)) ) {
-            ++stig;
+    if ((points % 2 ==0 && (frogPos[1] - frogRad) > (maxY - laneSize)) ||
+        (points % 2 ==1 && (frogPos[1] + frogRad) < (-maxY + laneSize)) ) {
+            ++points;
     }
+    if (points == 10) reset();
 
 
     // Setjum litinn sem hvítann og teiknum akgreinanna
@@ -180,7 +215,7 @@ function render() {
         var collisionX =(frogPos[0] - frogRad) < (carX[i] + carHalfLength) && 
                     (frogPos[0] + frogRad) > (carX[i] - carHalfLength);
         if (collisionY && collisionX) {
-            die();
+            reset();
         }
 
         // check out of bounds, reset
@@ -202,6 +237,14 @@ function render() {
     gl.uniform2fv( locOffset, flatten(frogPos) );
     gl.uniform1f( locTheta, frogDirection );
     gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+    // Teiknum stig
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferPoints);
+    gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
+    gl.uniform4fv( locColor, flatten(vec4(0.0, 0.0, 0.1, 1.0)) );
+    gl.uniform2fv( locOffset, flatten(vec2(0.0,0.0)) );
+    gl.uniform1f( locTheta, 0.0 );
+    gl.drawArrays(gl.LINES, 0, points*2.0);
     
     window.requestAnimFrame(render);
 }
