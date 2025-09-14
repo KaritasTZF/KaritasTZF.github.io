@@ -17,7 +17,7 @@ var carHalfLength = objRad*1.5;
 
 var frogRad = objRad;
 var frogPos;
-var frogDirection = 1;
+var frogDirection = 0.0;
 
 // buffers
 var bufferLanes;
@@ -27,7 +27,7 @@ var bufferFrog;
 var locColor;
 var locPosition;
 var locOffset;
-var locDirection;
+var locTheta;
 
 window.onload = function init()
 {
@@ -70,24 +70,26 @@ window.onload = function init()
     locColor = gl.getUniformLocation( program, "fColor" );
     locPosition = gl.getAttribLocation( program, "vPosition" );
     locOffset = gl.getUniformLocation( program, "offset" );
-    locDirection = gl.getUniformLocation( program, "direction" );
+    locTheta = gl.getUniformLocation( program, "theta" );
     gl.enableVertexAttribArray( locPosition );
 
     window.addEventListener("keyup", function(e){ 
         switch( e.key ) {
             case "ArrowUp":
                 frogPos[1] += laneSize;
-                frogDirection = 1;
+                frogDirection = 0.0;
                 break;
             case "ArrowDown":
                 frogPos[1] -= laneSize;
-                frogDirection = -1;
+                frogDirection = Math.PI;
                 break;
             case "ArrowLeft":
                 frogPos[0] -= laneSize;
+                frogDirection = Math.PI/2.0;
                 break;
             case "ArrowRight":
                 frogPos[0] += laneSize;
+                frogDirection = 3.0*Math.PI/2.0;
                 break;
         }
     });
@@ -134,13 +136,13 @@ function render() {
     gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.uniform4fv( locColor, flatten(vec4(0.6, 0.6, 0.6, 1.0)) );
     gl.uniform2fv( locOffset, flatten(vec2(0.0,0.0)) );
-    gl.uniform1i( locDirection, 0 );
+    gl.uniform1f( locTheta, 0.0 );
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, (laneFj+1)*2);
 
     // Setjum litinn sem fjólubláann og teiknum bílanna
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferCars);
     gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
-    gl.uniform1i( locDirection, 0 );
+    gl.uniform1f( locTheta, 0.0 );
     // for each car, update x position
     for (var i = 0; i < carFj; ++i ) {
         // check out of bounds
@@ -160,7 +162,7 @@ function render() {
     gl.vertexAttribPointer( locPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.uniform4fv( locColor, flatten(vec4(0.0, 0.8, 0.0, 1.0)) );
     gl.uniform2fv( locOffset, flatten(frogPos) );
-    gl.uniform1f( locDirection, frogDirection );
+    gl.uniform1f( locTheta, frogDirection );
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     
     window.requestAnimFrame(render);
