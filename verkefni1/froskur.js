@@ -4,16 +4,16 @@ var gl;
 var maxX = 1.0; //plusminus
 var maxY = 1.0; //plusminus
 
-var laneFj = 5; // Fjöldi akgreina
+var laneFj; // Fjöldi akgreina
 var laneSize; // stærð akgreina á canvas, 1 grid size
 var objRad; // stærð bíla & frosks 
 
-var carFj = 6; // Fjöldi bíla
-var carX = new Float32Array(carFj); // x-hnit bíla, changes
-var carY = new Float32Array(carFj); // y-hnit bíla, middle of lane
-var carSpeed = new Float32Array(carFj);
-var controlCarSpeed = 0.003; // for difficulty
-var carColor = new Array(carFj);
+var carFj; // Fjöldi bíla
+var carX; // x-hnit bíla, changes
+var carY; // y-hnit bíla, middle of lane
+var carSpeed;
+var controlCarSpeed; // for difficulty
+var carColor;
 var carHalfHeight;
 var carHalfLength;
 
@@ -44,17 +44,49 @@ window.onload = function init()
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 0.4, 0.4, 0.4, 1.0 );
 
+    var selectCars = document.getElementById("selectCars");
+    var selectLanes = document.getElementById("selectLanes");
+    var selectSpeed = document.getElementById("selectSpeed");
+    controlCarSpeed = parseInt(selectSpeed.value)*0.001;
+    laneFj = parseInt(selectLanes.value);
+
+    switch (selectCars.value) {
+        case "lanes":
+            carFj = laneFj;
+            break;
+        case "lanes plus 1":
+            carFj = laneFj + 1;
+            break;
+        case "lanes plus 2":
+            carFj = laneFj + 2;
+            break;
+        case "lanes plus 3":
+            carFj = laneFj + 3;
+            break;
+        case "two per lane":
+            carFj = 2*laneFj;
+            break;
+    }
+
     //
     // Initialize starting values of variables
     //
-    points = 0;
     laneSize  = 2.0/(laneFj+2.0);
     objRad = laneSize*(1.0-0.1)/2;
+
+    carX = new Float32Array(carFj); // x-hnit bíla
+    carY = new Float32Array(carFj); // y-hnit bíla
+    carSpeed = new Float32Array(carFj);
+    carColor = new Array(carFj);
     carHalfHeight = objRad;
     carHalfLength = objRad*1.5;
+
+    points = 0;
+
     frogRad = objRad*0.9;
     frogPos = vec2(0.0, (laneSize/2.0)-maxY);
     frogDirection = 0.0;
+
     var verticesFrog = new Float32Array([-frogRad,-frogRad, frogRad,-frogRad, 0,frogRad]);
     var verticesCars = generateCars();
     var verticesLanes = generateLanes();
@@ -132,9 +164,16 @@ function generateCars() {
     var lane;
     for (var i = 0; i < carFj; ++i ) {
         lane = i % laneFj;
-        carSpeed[i] = controlCarSpeed*(lane*0.8+1.0);
-        carX[i] = Math.random()*2.0-1.0;
+        // If there are two cars in the lane, 
+        // ensure no overlap
+        if (lane <= carFj % laneFj || carFj == 2*laneFj) {
+            carX[i] = Math.random()*(maxX-2*carHalfLength) + carHalfLength;
+            carX[i] += (i == lane) ? 0 : -maxX;
+        } else {
+            carX[i] = Math.random()*2.0-1.0;
+        }
         carY[i] = (lane-((laneFj-1.0)/2.0))*laneSize;
+        carSpeed[i] = controlCarSpeed*(lane*0.8+1.0);
         carColor[i] = vec4(0.6 + i*0.6/carFj , i*0.7/carFj, 0.8 - i*0.8/carFj, 1.0);
 
         // teikna kassa
@@ -176,7 +215,8 @@ function generatePoints() {
     ]);
 }
 
-function reset() {
+function newGame() {
+    frogDirection = 0.0;
     frogPos = vec2(0.0, (laneSize/2.0)-maxY);
     points = 0;
 }
@@ -192,7 +232,7 @@ function render() {
         (points % 2 ==1 && (frogPos[1] + frogRad) < (-maxY + laneSize)) ) {
             ++points;
     }
-    if (points == 10) reset();
+    if (points == 10) newGame();
 
 
     // Setjum litinn sem hvítann og teiknum akgreinanna
@@ -215,7 +255,7 @@ function render() {
         var collisionX =(frogPos[0] - frogRad) < (carX[i] + carHalfLength) && 
                     (frogPos[0] + frogRad) > (carX[i] - carHalfLength);
         if (collisionY && collisionX) {
-            reset();
+            newGame();
         }
 
         // check out of bounds, reset
