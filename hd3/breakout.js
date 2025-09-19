@@ -24,13 +24,13 @@ var bufferSpadi;
 var locColor;
 var locPos;
 
-var verticesSpadi = new Float32Array([
+var spadiVertices = new Float32Array([
     -0.1, -0.02, 
     -0.1, 0.02, 
     0.1, 0.02, 
     0.1, -0.02
 ]);
-var verticesBox = new Float32Array([
+var boxVertices = new Float32Array([
     -0.05, -0.05, 
     0.05, -0.05, 
     0.05, 0.05, 
@@ -60,11 +60,11 @@ window.onload = function init() {
     // Load the data into the GPU
     bufferBox = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferBox);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesBox), gl.DYNAMIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(boxVertices), gl.DYNAMIC_DRAW);
 
     bufferSpadi = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferSpadi);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesSpadi), gl.DYNAMIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(spadiVertices), gl.DYNAMIC_DRAW);
 
     // Associate out shader variables with our data buffer
     var vPosition = gl.getAttribLocation( program, "vPosition" );
@@ -98,9 +98,18 @@ window.onload = function init() {
 
 function render() {
     
-    // Láta ferninginn skoppa af veggjunum
+    // Láta ferninginn skoppa af veggjunum og spaðann
     if (Math.abs(boxPos[0] + dX) > maxX - boxRad) dX = -dX;
-    if (Math.abs(boxPos[1] + dY) > maxY - boxRad) dY = -dY;
+    if (boxPos[1] + dY > maxY - boxRad) dY = -dY;
+    if (-boxPos[1] - dY > maxY - boxRad) {
+        dX=0; dY=0;
+    }
+    var collisionY = (boxPos[1] - boxRad) < (spadiPos[1] + 0.02) && 
+                    (boxPos[1] + boxRad) > (spadiPos[1] - 0.02);
+    var collisionX =(boxPos[0] - boxRad) < (spadiPos[0] + 0.1) && 
+                    (boxPos[0] + boxRad) > (spadiPos[0] - 0.1);
+    if (collisionX && collisionY) dY=-dY;
+    
 
     // Uppfæra staðsetningu
     boxPos[0] += dX;
@@ -108,7 +117,6 @@ function render() {
     
     gl.clear( gl.COLOR_BUFFER_BIT );
     
-
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferSpadi);
     gl.uniform2fv( locPos, flatten(spadiPos) );
     gl.uniform4fv( locColor, flatten(vec4(0.0, 0.0, 0.0, 1.0)) );
