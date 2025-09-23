@@ -1,9 +1,3 @@
-/////////////////////////////////////////////////////////////////
-//    Sýnidæmi í Tölvugrafík
-//     Búum til bókstafinn H úr þremur teningum
-//
-//    Hjálmtýr Hafsteinsson, september 2025
-/////////////////////////////////////////////////////////////////
 var canvas;
 var gl;
 
@@ -19,6 +13,12 @@ var origX;
 var origY;
 
 var matrixLoc;
+
+//control
+var height = 1.0; //half
+var outerWidth = 0.05;
+var innerWidth = 0.02;
+var halfHeight = height/2.0;
 
 window.onload = function init()
 {
@@ -135,21 +135,38 @@ function render()
     mv = mult( mv, rotateX(spinX) );
     mv = mult( mv, rotateY(spinY) ) ;
 
-    // Build the letter H...
-    // First the right leg
-    mv1 = mult( mv, translate( -0.3, 0.0, 0.0 ) );
-    mv1 = mult( mv1, scalem( 0.1, 1.0, 0.1 ) );
+    // Build the furniture...
+    // First the right wall
+    mv1 = mult( mv, translate( -halfHeight, 0.0, 0.0 ) );
+    mv1 = mult( mv1, scalem( outerWidth, height, halfHeight ) );
     gl.uniformMatrix4fv(matrixLoc, false, flatten(mv1));
     gl.drawArrays( gl.TRIANGLES, 0, numVertices );
 
-    // Then the left leg
-    mv1 = mult( mv, translate( 0.3, 0.0, 0.0 ) );
-    mv1 = mult( mv1, scalem( 0.1, 1.0, 0.1 ) );
+    // Then the left wall
+    mv1 = mult( mv, translate( halfHeight, 0.0, 0.0 ) );
+    mv1 = mult( mv1, scalem( outerWidth, height, halfHeight ) );
     gl.uniformMatrix4fv(matrixLoc, false, flatten(mv1));
     gl.drawArrays( gl.TRIANGLES, 0, numVertices );
 
-    // Finally the middle bar (no translation necessary)
-    mv1 = mult( mv, scalem( 0.5, 0.1, 0.1 ) );
+    // top wall
+    mv1 = mult( mv, translate( 0.0, halfHeight, 0.0 ) );
+    mv1 = mult( mv1, scalem( height+outerWidth, outerWidth, halfHeight ) );
+    gl.uniformMatrix4fv(matrixLoc, false, flatten(mv1));
+    gl.drawArrays( gl.TRIANGLES, 0, numVertices );
+
+    // bottom wall
+    mv1 = mult( mv, translate( 0.0, -halfHeight, 0.0 ) );
+    mv1 = mult( mv1, scalem( height+outerWidth, outerWidth, halfHeight ) );
+    gl.uniformMatrix4fv(matrixLoc, false, flatten(mv1));
+    gl.drawArrays( gl.TRIANGLES, 0, numVertices );
+
+    // now the inside walls
+    // horizontal
+    mv1 = mult( mv, scalem( height, innerWidth, halfHeight - outerWidth ) );
+    gl.uniformMatrix4fv(matrixLoc, false, flatten(mv1));
+    gl.drawArrays( gl.TRIANGLES, 0, numVertices );
+    // vertical
+    mv1 = mult( mv, scalem( innerWidth, height, halfHeight  - outerWidth ) );
     gl.uniformMatrix4fv(matrixLoc, false, flatten(mv1));
     gl.drawArrays( gl.TRIANGLES, 0, numVertices );
 
