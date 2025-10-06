@@ -32,7 +32,8 @@ var GREEN = vec4(0.1, 0.45, 0.0, 1.0);
 var DARK_GREEN = vec4(0.1, 0.5, 0.1, 1.0); //WIP
 
 var numCubeVertices  = 36;
-var numRoofVertices = 18;
+var numIsoVertices = 18;
+var numRightVertices = 18;
 var numTrackVertices  = 2*TRACK_PTS + 2;
 
 
@@ -54,7 +55,8 @@ var pLoc;
 var proj;
 
 var cubeBuffer;
-var roofBuffer;
+var isoBuffer;
+var rightBuffer;
 var trackBuffer;
 var vPosition;
 
@@ -80,8 +82,8 @@ var cVertices = [
     vec3( -0.5, -0.5,  0.5 ), vec3( -0.5,  0.5,  0.5 ), vec3( -0.5,  0.5, -0.5 )
 ];
 
-// roof vertices, a 3d triangle. can skip the bottom
-var rVertices = [
+// roof vertices, a 3d isosceles triangle. can skip the bottom
+var isoVertices = [
     // Front
     vec3(0.0, 0.5, 0.5), vec3(-0.5, 0.5, -0.5), vec3(0.5, 0.5, -0.5),
     // right side:
@@ -93,6 +95,19 @@ var rVertices = [
     // Back
     vec3(-0.5, -0.5, -0.5), vec3(0.0, -0.5, 0.5), vec3(0.5, -0.5, -0.5),
 ];
+var rightVertices = [
+    // Front
+    vec3(-0.5, 0.5, 0.5), vec3(-0.5, 0.5, -0.5), vec3(0.5, 0.5, -0.5),
+    // right side:
+    vec3(-0.5, 0.5, -0.5), vec3(-0.5, 0.5, 0.5), vec3(-0.5, -0.5, 0.5),
+    vec3(-0.5, 0.5, -0.5), vec3(-0.5, -0.5, 0.5), vec3(-0.5, -0.5, -0.5),
+    // left side:
+    vec3(-0.5, 0.5, 0.5), vec3(0.5, 0.5, -0.5), vec3(-0.5, -0.5, 0.5),
+    vec3(-0.5, -0.5, 0.5), vec3(0.5, 0.5, -0.5), vec3(0.5, -0.5, -0.5),
+    // Back
+    vec3(-0.5, -0.5, -0.5), vec3(-0.5, -0.5, 0.5), vec3(0.5, -0.5, -0.5),
+];
+
 
 // vertices of the track
 var tVertices = [];
@@ -128,10 +143,14 @@ window.onload = function init()
     gl.bindBuffer( gl.ARRAY_BUFFER, cubeBuffer );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(cVertices), gl.STATIC_DRAW );
 
-    //VBO for the roof
-    roofBuffer = gl.createBuffer();
-    gl.bindBuffer( gl.ARRAY_BUFFER, roofBuffer );
-    gl.bufferData( gl.ARRAY_BUFFER, flatten(rVertices), gl.STATIC_DRAW );
+    //VBO for the roofs, isoscoles triangle
+    isoBuffer = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, isoBuffer );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(isoVertices), gl.STATIC_DRAW );
+    //VBO for the roofs/overpass, right triangle
+    rightBuffer = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, rightBuffer );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(rightVertices), gl.STATIC_DRAW );
 
 
     vPosition = gl.getAttribLocation( program, "vPosition" );
@@ -233,11 +252,11 @@ function house1( x, y, size, mv, Hcolor, Rcolor ) {
     var mvR = mult( mv, translate( x, y, 5*size/4 ) );
     mvR = mult( mvR, scalem( size, size, size*0.5 ) );
 
-    gl.bindBuffer( gl.ARRAY_BUFFER, roofBuffer );
+    gl.bindBuffer( gl.ARRAY_BUFFER, isoBuffer );
     gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
 
     gl.uniformMatrix4fv(mvLoc, false, flatten(mvR));
-    gl.drawArrays( gl.TRIANGLES, 0, numRoofVertices);
+    gl.drawArrays( gl.TRIANGLES, 0, numIsoVertices);
 }
 
 function house2( x, y, size, mv, Hcolor, Rcolor ) {
@@ -258,11 +277,11 @@ function house2( x, y, size, mv, Hcolor, Rcolor ) {
     mvR = mult(mvR, rotateZ(90));
     mvR = mult( mvR, scalem( size*1.5, size, size*0.4 ) );
 
-    gl.bindBuffer( gl.ARRAY_BUFFER, roofBuffer );
+    gl.bindBuffer( gl.ARRAY_BUFFER, isoBuffer );
     gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
 
     gl.uniformMatrix4fv(mvLoc, false, flatten(mvR));
-    gl.drawArrays( gl.TRIANGLES, 0, numRoofVertices)
+    gl.drawArrays( gl.TRIANGLES, 0, numIsoVertices)
 }
 
 function house3( x, y, size, mv, Hcolor, Rcolor ) {
@@ -291,13 +310,13 @@ function house3( x, y, size, mv, Hcolor, Rcolor ) {
     mvR2 = mult(mvR2, rotateZ(90));
     mvR2 = mult( mvR2, scalem( size*1.5, size*xoffset, size*0.2 ) );
 
-    gl.bindBuffer( gl.ARRAY_BUFFER, roofBuffer );
+    gl.bindBuffer( gl.ARRAY_BUFFER, isoBuffer );
     gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
 
     gl.uniformMatrix4fv(mvLoc, false, flatten(mvR1));
-    gl.drawArrays( gl.TRIANGLES, 0, numRoofVertices);
+    gl.drawArrays( gl.TRIANGLES, 0, numIsoVertices);
     gl.uniformMatrix4fv(mvLoc, false, flatten(mvR2));
-    gl.drawArrays( gl.TRIANGLES, 0, numRoofVertices);
+    gl.drawArrays( gl.TRIANGLES, 0, numIsoVertices);
 }
 
 function tree( x, y, size, mv, color ) {
@@ -325,6 +344,46 @@ function tree( x, y, size, mv, color ) {
     gl.drawArrays( gl.TRIANGLES, 0, numCubeVertices );
 }
 
+function overpass(mv) {
+    gl.uniform4fv(colorLoc, BROWN);
+    var h = 6.0;
+    var width = 10;
+    var ramplength = 25.0;
+    // mv to location, aligned perpendicular to track
+    mv = mult(mv, translate(-70.7, 70.7, h/2));
+    mv = mult(mv, rotateZ(-45));
+
+    // build overpass cubes
+    var mvTop = mult(mv, translate(0.0, 0.0, h/2-0.5));
+    mvTop = mult(mvTop, scalem(23.0, width, 1.0));
+    var mvLeft = mult(mv, translate(11.0, 0.0, 0.0));
+    mvLeft = mult(mvLeft, scalem(1.0, width, h));
+    var mvRight = mult(mv, translate(-11.0, 0.0, 0.0));
+    mvRight = mult(mvRight, scalem(1.0, width, h));
+    // overpass ramps of right triangles
+    var mv1 = mult(mv, translate(11.5+ramplength/2.0, 0.0, 0.0));
+    mv1 = mult(mv1, scalem(ramplength, width, h));
+    var mv2 = mult(mv, translate(-11.5-ramplength/2.0, 0.0, 0.0));
+    mv2 = mult(mv2, rotateZ(180));
+    mv2 = mult(mv2, scalem(ramplength, width, h));
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, rightBuffer);
+    gl.vertexAttribPointer(vPosition, 3, gl.FLOAT, false, 0, 0);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mv1));
+    gl.drawArrays(gl.TRIANGLES, 0, numRightVertices);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mv2));
+    gl.drawArrays(gl.TRIANGLES, 0, numRightVertices);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeBuffer);
+    gl.vertexAttribPointer(vPosition, 3, gl.FLOAT, false, 0, 0);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvTop));
+    gl.drawArrays(gl.TRIANGLES, 0, numCubeVertices);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvLeft));
+    gl.drawArrays(gl.TRIANGLES, 0, numCubeVertices);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvRight));
+    gl.drawArrays(gl.TRIANGLES, 0, numCubeVertices);
+}
+
 // draw the circular track and a few houses (i.e. red cubes)
 function drawScenery( mv ) {
 
@@ -336,62 +395,62 @@ function drawScenery( mv ) {
     gl.uniformMatrix4fv(mvLoc, false, flatten(mv));
     gl.drawArrays( gl.TRIANGLE_STRIP, 0, numTrackVertices );
 
+    // draw overpass
+    overpass(mv);
 
-    // draw houses    
-    
+    // draw houses and trees  
+
+    //inside hringbraut left-right
+    tree(60.0, -60.0, 8.0, mv, GREEN);
     house1(10.0, -60.0, 10.0, mv, WHITE, DARK_RED);
+    tree(-5.0, -60.0, 6.5, mv, GREEN);
     house1(-30.0, -50.0, 7.0, mv, WHITE, DARK_GRAY);
-    house1(130.0, -50.0, 10.0, mv, WHITE, RED);
-    house1(-20.0, 50.0, 5.0, mv, WHITE, ORANGE_R);
-    house1(-20.0, 75.0, 8.0, mv, WHITE, DARK_RED);
-    house1(-40.0, 140.0, 10.0, mv, WHITE, DARK_RED);
 
     house2(20.0, -10.0, 8.0, mv, DARK_RED, ORANGE_Y);
-    house2(110.0, -60.0, 10.0, mv, DARK_GRAY, YELLOW);
-    house2(-60.0, -110.0, 10.0, mv, DARK_GRAY, YELLOW);
-    house2(0.0, 70.0, 9.0, mv, DARK_GRAY, YELLOW);
-    house2(40.0, 120.0, 10.0, mv, DARK_GRAY, YELLOW);
-    house2(110.0, 50.0, 5.0, mv, DARK_GRAY, ORANGE_Y);
-
-    house3(-130.0, 0.0, 15.0, mv, DARK_RED, WHITE);
-    house3(80.0, -90.0, 8.0, mv, DARK_GRAY, WHITE);
-
-    // trees
-    // center cluster
     tree(0.0, 0.0, 8.5, mv, ORANGE_R);
     tree(10.0, 5.0, 6.5, mv, GREEN);
     tree(9.0, 20.0, 7.0, mv, GREEN);
 
-    // top center (1)
-    tree(-120.0, 30.0, 6.0, mv, GREEN);
-    tree(-130.0, -15.0, 7.0, mv, GREEN);
-    tree(-130.0, 20.0, 7.5, mv, GREEN);
-
-    // top left (1)
-    tree(-75.0, -95.0, 10.0, mv, GREEN);
-    tree(-95.0, -75.0, 7.0, mv, GREEN);
-    tree(-90.0, -105.0, 7.5, mv, ORANGE_R);
-
-    // inside hringbraut
-    tree(-5.0, -60.0, 6.5, mv, GREEN);
-    tree(60.0, -60.0, 8.0, mv, GREEN);
+    house1(-20.0, 50.0, 5.0, mv, WHITE, ORANGE_R);
     tree(30.0, 60.0, 7.5, mv, GREEN);
+    house2(0.0, 70.0, 9.0, mv, DARK_GRAY, YELLOW);
+    house1(-20.0, 75.0, 8.0, mv, WHITE, DARK_RED);
 
-    // bottom left (1)
-    tree(70.0, -100.0, 7.0, mv, GREEN);
-    tree(80.0, -105.0, 6.0, mv, ORANGE_R);
-    tree(125.0, -65.0, 8.0, mv, GREEN);
+    // outside hringbraut, clockwise by view 1
+
+    // top center
+    tree(-130.0, -15.0, 7.0, mv, GREEN);
+    house3(-130.0, 0.0, 15.0, mv, DARK_RED, WHITE);
+    tree(-130.0, 20.0, 7.5, mv, GREEN);
+    tree(-120.0, 30.0, 6.0, mv, GREEN);
 
     // top right
     tree(-40.0, 120.0, 5.5, mv, GREEN);
     tree(-50.0, 135.0, 9.0, mv, GREEN);
+    house1(-40.0, 140.0, 10.0, mv, WHITE, DARK_RED);
     tree(-35.0, 150.0, 7.5, mv, ORANGE_R);
-    
-    // bottom right
-    tree(40.0, 135.0, 8.0, mv, GREEN);
-    tree(55.0, 110.0, 7.0, mv, GREEN);
-    tree(60.0, 100.0, 5.0, mv, GREEN);
 
+    // bottom right
+    tree(45.0, 135.0, 8.0, mv, GREEN);
+    house2(45.0, 120.0, 10.0, mv, DARK_GRAY, YELLOW);
+    tree(60.0, 110.0, 7.0, mv, GREEN);
+    tree(75.0, 100.0, 5.0, mv, GREEN);
+    house2(115.0, 55.0, 5.0, mv, DARK_GRAY, ORANGE_Y);
+
+    // bottom left
+    house1(140.0, -50.0, 10.0, mv, WHITE, RED);
+    tree(130.0, -65.0, 8.0, mv, GREEN);
+    house2(115.0, -65.0, 10.0, mv, DARK_GRAY, YELLOW);
+
+    house3(90.0, -90.0, 8.0, mv, WHITE, DARK_GRAY);
+    tree(75.0, -105.0, 7.0, mv, GREEN);
+    tree(85.0, -105.0, 6.0, mv, ORANGE_R);
+
+    // top left
+    house2(-65.0, -115.0, 10.0, mv, DARK_GRAY, YELLOW);
+    tree(-75.0, -100.0, 10.0, mv, GREEN);
+    tree(-95.0, -85.0, 7.0, mv, GREEN);
+    tree(-90.0, -105.0, 7.5, mv, ORANGE_R);
 }
 
 
@@ -425,9 +484,9 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    car1Direction += 0.3;
+    car1Direction += 0.5;
     if ( car1Direction > 360.0 ) car1Direction = 0.0;
-    car2Direction -= 0.3;
+    car2Direction -= 2.0;
     if ( car2Direction > 360.0 ) car2Direction = 0.0;
 
     car1XPos = (TRACK_RADIUS+5) * Math.sin( radians(car1Direction) );
@@ -517,7 +576,7 @@ function render()
 	    break;
 	case 8:
 	    // View from beside the car
-	    mv = lookAt( vec3(2.0, 20.0, 5.0+height), vec3(2.0, 0.0, 2.0), vec3(0.0, 0.0, 1.0 ) );
+	    mv = lookAt( vec3(2.0, 15.0, 5.0+height), vec3(2.0, 0.0, 2.0), vec3(0.0, 0.0, 1.0 ) );
 	    drawCar( mv, RED );
 	    mv = mult( mv, rotateZ( car1Direction ) );
 	    mv = mult( mv, translate(-car1XPos, -car1YPos, 0.0) );
