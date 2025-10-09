@@ -46,6 +46,13 @@ var car2XPos = -100.0;
 var car2YPos = 0.0;
 var height = 0.0;
 
+// variables for person
+var personDirection = 0.0;
+var personXPos = 0.0;
+var personYPos = 0.0;
+var origX;
+var movement;
+
 // current viewpoint
 var view = 1;
 
@@ -204,6 +211,10 @@ window.onload = function init()
                 view = 8;
                 document.getElementById("Viewpoint").innerHTML = "8: Til hliðar við bílinn";
                 break;
+            case 48:	// 0: walking on the ground
+                view = 0;
+                document.getElementById("Viewpoint").innerHTML = "0: Gangandi á jörðu";
+                break;
             
             case 38:    // up arrow
                 height += 2.0;
@@ -213,8 +224,43 @@ window.onload = function init()
                 height -= 2.0;
                 document.getElementById("Height").innerHTML = "Viðbótarhæð: "+ height;
                 break;
+            
+            case 65: // A, left
+                personXPos -= Math.cos(radians(personDirection));
+                personYPos += Math.sin(radians(personDirection));
+                break;
+            case 68: // D, right
+                personXPos += Math.cos(radians(personDirection));
+                personYPos -= Math.sin(radians(personDirection));
+                break;
+            case 83: // S, backwards
+                personXPos -= Math.sin(radians(personDirection));
+                personYPos -= Math.cos(radians(personDirection));
+                break;
+            case 87: // W, forward
+                personXPos += Math.sin(radians(personDirection));
+                personYPos += Math.cos(radians(personDirection));
+                break;
         }
     } );
+
+    //event listeners for mouse
+    canvas.addEventListener("mousedown", function(e){
+        movement = true;
+        origX = e.offsetX;
+        e.preventDefault();         // Disable drag and drop
+    } );
+    canvas.addEventListener("mouseup", function(e){
+        movement = false;
+    } );
+
+    canvas.addEventListener("mousemove", function(e){
+        if(movement){
+            personDirection = ( personDirection + (origX - e.offsetX) /8.0) % 360;
+            if(personDirection<0) personDirection += 360;
+            origX = e.offsetX;
+        }
+    });
 
     render();
 }
@@ -407,7 +453,7 @@ function drawScenery( mv ) {
     house1(-30.0, -50.0, 7.0, mv, WHITE, DARK_GRAY);
 
     house2(20.0, -10.0, 8.0, mv, DARK_RED, ORANGE_Y);
-    tree(0.0, 0.0, 8.5, mv, ORANGE_R);
+    tree(0.0, -5.0, 8.5, mv, ORANGE_R);
     tree(10.0, 5.0, 6.5, mv, GREEN);
     tree(9.0, 20.0, 7.0, mv, GREEN);
 
@@ -484,9 +530,9 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    car1Direction += 0.5;
+    car1Direction += 1.5;
     if ( car1Direction > 360.0 ) car1Direction = 0.0;
-    car2Direction -= 2.0;
+    car2Direction -= 0.5;
     if ( car2Direction > 360.0 ) car2Direction = 0.0;
 
     car1XPos = (TRACK_RADIUS+5) * Math.sin( radians(car1Direction) );
@@ -496,8 +542,20 @@ function render()
 
     var mv = mat4();
     switch( view ) {
-        case 1:
-            // Distant and stationary viewpoint
+    case 0:
+        mv = lookAt(vec3(0.0, 0.0, 4.0+height), vec3(0.0, 100.0, 4.0), vec3(0.0,0.0,1.0));
+        mv = mult( mv, rotateZ(personDirection));
+        mv = mult( mv, translate(-personXPos, -personYPos, 0.0));
+        drawScenery(mv);
+	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
+	    mv1 = mult( mv1, rotateZ( -car1Direction ) ) ;
+	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
+	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
+	    drawCar( mv1, RED);
+        drawCar( mv2, YELLOW);
+        break;
+    case 1:
+        // Distant and stationary viewpoint
 	    mv = lookAt( vec3(250.0, 0.0, 100.0+height), vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 1.0) );
 	    drawScenery( mv );
 	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
