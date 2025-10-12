@@ -236,20 +236,28 @@ window.onload = function init()
                 break;
             
             case 65: // A, left
-                personXPos -= Math.cos(radians(personDirection));
-                personYPos += Math.sin(radians(personDirection));
+                if (view == 0) {
+                    personXPos -= Math.cos(radians(personDirection));
+                    personYPos += Math.sin(radians(personDirection));
+                }
                 break;
             case 68: // D, right
-                personXPos += Math.cos(radians(personDirection));
-                personYPos -= Math.sin(radians(personDirection));
+                if (view == 0) {
+                    personXPos += Math.cos(radians(personDirection));
+                    personYPos -= Math.sin(radians(personDirection));
+                }
                 break;
             case 83: // S, backwards
-                personXPos -= Math.sin(radians(personDirection));
-                personYPos -= Math.cos(radians(personDirection));
+                if (view == 0) {
+                    personXPos -= Math.sin(radians(personDirection));
+                    personYPos -= Math.cos(radians(personDirection));
+                }
                 break;
             case 87: // W, forward
-                personXPos += Math.sin(radians(personDirection));
-                personYPos += Math.cos(radians(personDirection));
+                if (view == 0) {
+                    personXPos += Math.sin(radians(personDirection));
+                    personYPos += Math.cos(radians(personDirection));
+                }
                 break;
         }
     } );
