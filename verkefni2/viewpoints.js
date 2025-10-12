@@ -759,7 +759,7 @@ function render()
 	    break;
     case 9:
         // view from overpass, looking at plane
-	    mv = lookAt( vec3(150.0, 0.0, 6.0+height), vec3(planeXPos, planeYPos, 40.0), vec3(0.0, 0.0, 1.0 ) );
+	    mv = lookAt( vec3(150.0, 0.0, 6.0+height), vec3(planeXPos, planeYPos, 60.0), vec3(0.0, 0.0, 1.0 ) );
 	    drawScenery( mv );
 
 	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
