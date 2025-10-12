@@ -18,18 +18,18 @@ var TRACK_INNER = 90.0;
 var TRACK_OUTER = 110.0;
 var TRACK_PTS = 100;
 
-var BLUE = vec4(0.0, 0.0, 1.0, 1.0);
-var RED = vec4(0.76, 0.18, 0.15, 1.0);
 var GRAY = vec4(0.5, 0.45, 0.4, 1.0);
-var DARK_GRAY = vec4(0.35, 0.225, 0.2, 1.0);
-var WHITE = vec4(0.8, 0.8, 0.6, 1.0);
+var DARK_GRAY = vec4(0.212, 0.176, 0.11, 1.0);
+var WHITE = vec4(0.85, 0.85, 0.7, 1.0);
+var WOOD = vec4(0.89, 0.816, 0.667, 1.0);
 var DARK_RED = vec4(0.47, 0.0, 0.09, 1.0);
-var YELLOW = vec4(0.97, 0.71, 0.22, 1.0);
+var YELLOW = vec4(.651, 0.173, 0.012, 1.0);
 var ORANGE_Y = vec4(0.86, 0.49, 0.15, 1.0);
-var ORANGE_R = vec4(0.86, 0.34, 0.16, 1.0);
+
+var MUD_ORANGE = vec4(0.76, 0.34, 0.027, 1.0);
 var BROWN = vec4(0.5, 0.2, 0.1, 1.0); 
-var GREEN = vec4(0.1, 0.45, 0.0, 1.0);
-var DARK_GREEN = vec4(0.1, 0.5, 0.1, 1.0); //WIP
+var GREEN = vec4(0.28, 0.42, 0.067, 1.0);
+var ICELANDAIR = vec4(0, 0.1, 0.44, 1.0);
 
 var numCubeVertices  = 36;
 var numIsoVertices = 18;
@@ -44,7 +44,6 @@ var car1YPos = 0.0;
 var car2Direction = 0.0;
 var car2XPos = -100.0;
 var car2YPos = 0.0;
-var height = 0.0;
 
 // variables for person
 var personDirection = 0.0;
@@ -53,8 +52,15 @@ var personYPos = 0.0;
 var origX;
 var movement;
 
+// variables for airplane
+var planeTheta = 0.0;
+var planeDirection = 0.0;
+var planeXPos = 0.0;
+var planeYPos = 0.0;
+
 // current viewpoint
 var view = 1;
+var height = 0.0;
 
 var colorLoc;
 var mvLoc;
@@ -128,7 +134,7 @@ window.onload = function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
-    gl.clearColor( 0.5, 0.75, 0.45, 1.0 );
+    gl.clearColor( 0.271, 0.51, 0.671, 1.0 );
     
     gl.enable(gl.DEPTH_TEST);
 
@@ -211,6 +217,10 @@ window.onload = function init()
                 view = 8;
                 document.getElementById("Viewpoint").innerHTML = "8: Til hliðar við bílinn";
                 break;
+            case 57:	// 9: from overpass looking at plane
+                view = 9;
+                document.getElementById("Viewpoint").innerHTML = "9: Horfa á flugvélinni";
+                break;
             case 48:	// 0: walking on the ground
                 view = 0;
                 document.getElementById("Viewpoint").innerHTML = "0: Gangandi á jörðu";
@@ -255,7 +265,7 @@ window.onload = function init()
     } );
 
     canvas.addEventListener("mousemove", function(e){
-        if(movement){
+        if(movement && view == 0){
             personDirection = ( personDirection + (origX - e.offsetX) /8.0) % 360;
             if(personDirection<0) personDirection += 360;
             origX = e.offsetX;
@@ -430,7 +440,37 @@ function overpass(mv) {
     gl.drawArrays(gl.TRIANGLES, 0, numCubeVertices);
 }
 
-// draw the circular track and a few houses (i.e. red cubes)
+function drawAirlane(mv) {
+    gl.uniform4fv(colorLoc, WHITE);
+    var u = 8.0; // unit for size
+    // plane is a cube (body) and three right angled triangles (wings & tail)
+    var mvBody = mult(mv, scalem(4.0*u, u, u));
+    var mvTail = mult(mv, translate(-u*7/4, 0.0, u*7/8));
+    mvTail = mult(mvTail, scalem(u/2, 4.0, u*3/4));
+    var mvLwing = mult(mv, translate(0.0, u*5/4, 0.0));
+    mvLwing = mult(mvLwing, rotateX(-90));
+    mvLwing = mult(mvLwing, scalem(u*3/2, u/2, 2*u));
+    var mvRwing = mult(mv, translate(0.0, -u*5/4, 0.0));
+    mvRwing = mult(mvRwing, rotateX(90));
+    mvRwing = mult(mvRwing, scalem(u*3/2, u/2, 2*u));
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, cubeBuffer);
+    gl.vertexAttribPointer(vPosition, 3, gl.FLOAT, false, 0, 0);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvBody));
+    gl.drawArrays(gl.TRIANGLES, 0, numCubeVertices);
+    
+    gl.bindBuffer(gl.ARRAY_BUFFER, rightBuffer);
+    gl.vertexAttribPointer(vPosition, 3, gl.FLOAT, false, 0, 0);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvLwing));
+    gl.drawArrays(gl.TRIANGLES, 0, numRightVertices);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvRwing));
+    gl.drawArrays(gl.TRIANGLES, 0, numRightVertices);
+    gl.uniform4fv(colorLoc, ICELANDAIR);
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvTail));
+    gl.drawArrays(gl.TRIANGLES, 0, numRightVertices);
+}
+
+// draw the circular track, houses, trees and overpass
 function drawScenery( mv ) {
 
     // draw track
@@ -448,55 +488,65 @@ function drawScenery( mv ) {
 
     //inside hringbraut left-right
     tree(60.0, -60.0, 8.0, mv, GREEN);
-    house1(10.0, -60.0, 10.0, mv, WHITE, DARK_RED);
+    tree(55.0, -52.0, 6.5, mv, MUD_ORANGE);
+    house1(10.0, -60.0, 10.0, mv, WOOD, DARK_RED);
     tree(-5.0, -60.0, 6.5, mv, GREEN);
-    house1(-30.0, -50.0, 7.0, mv, WHITE, DARK_GRAY);
+    house1(-30.0, -50.0, 7.0, mv, WOOD, DARK_GRAY);
 
     house2(20.0, -10.0, 8.0, mv, DARK_RED, ORANGE_Y);
-    tree(0.0, -5.0, 8.5, mv, ORANGE_R);
+    tree(0.0, -5.0, 8.5, mv, MUD_ORANGE);
     tree(10.0, 5.0, 6.5, mv, GREEN);
     tree(9.0, 20.0, 7.0, mv, GREEN);
 
-    house1(-20.0, 50.0, 5.0, mv, WHITE, ORANGE_R);
+    house1(-20.0, 50.0, 5.0, mv, WOOD, MUD_ORANGE);
     tree(30.0, 60.0, 7.5, mv, GREEN);
     house2(0.0, 70.0, 9.0, mv, DARK_GRAY, YELLOW);
-    house1(-20.0, 75.0, 8.0, mv, WHITE, DARK_RED);
+    house1(-20.0, 75.0, 8.0, mv, WOOD, DARK_RED);
 
     // outside hringbraut, clockwise by view 1
 
     // top center
     tree(-130.0, -15.0, 7.0, mv, GREEN);
-    house3(-130.0, 0.0, 15.0, mv, DARK_RED, WHITE);
-    tree(-130.0, 20.0, 7.5, mv, GREEN);
+    house3(-130.0, 0.0, 15.0, mv, DARK_RED, WOOD);
+    tree(-130.0, 20.0, 7.5, mv, MUD_ORANGE);
     tree(-120.0, 30.0, 6.0, mv, GREEN);
 
     // top right
     tree(-40.0, 120.0, 5.5, mv, GREEN);
     tree(-50.0, 135.0, 9.0, mv, GREEN);
-    house1(-40.0, 140.0, 10.0, mv, WHITE, DARK_RED);
-    tree(-35.0, 150.0, 7.5, mv, ORANGE_R);
+    house1(-40.0, 140.0, 10.0, mv, WOOD, DARK_RED);
+    tree(-35.0, 150.0, 7.5, mv, MUD_ORANGE);
 
     // bottom right
     tree(45.0, 135.0, 8.0, mv, GREEN);
     house2(45.0, 120.0, 10.0, mv, DARK_GRAY, YELLOW);
     tree(60.0, 110.0, 7.0, mv, GREEN);
-    tree(75.0, 100.0, 5.0, mv, GREEN);
+    tree(75.0, 100.0, 5.0, mv, MUD_ORANGE);
     house2(115.0, 55.0, 5.0, mv, DARK_GRAY, ORANGE_Y);
 
     // bottom left
-    house1(140.0, -50.0, 10.0, mv, WHITE, RED);
+    house1(140.0, -50.0, 10.0, mv, WOOD, ORANGE_Y);
     tree(130.0, -65.0, 8.0, mv, GREEN);
     house2(115.0, -65.0, 10.0, mv, DARK_GRAY, YELLOW);
 
-    house3(90.0, -90.0, 8.0, mv, WHITE, DARK_GRAY);
+    house3(90.0, -90.0, 8.0, mv, WOOD, DARK_GRAY);
     tree(75.0, -105.0, 7.0, mv, GREEN);
-    tree(85.0, -105.0, 6.0, mv, ORANGE_R);
+    tree(85.0, -105.0, 6.0, mv, MUD_ORANGE);
 
     // top left
     house2(-65.0, -115.0, 10.0, mv, DARK_GRAY, YELLOW);
     tree(-75.0, -100.0, 10.0, mv, GREEN);
     tree(-95.0, -85.0, 7.0, mv, GREEN);
-    tree(-90.0, -105.0, 7.5, mv, ORANGE_R);
+    tree(-90.0, -105.0, 7.5, mv, MUD_ORANGE);
+
+    // ground
+    var mvg = mult(mv, translate(0.0, 0.0, -0.06));
+    mvg = mult(mvg, scalem(500.0, 500.0, 0.1));
+    gl.uniform4fv(colorLoc, vec4( 0.7, 0.64, 0.275, 1.0 ));
+    gl.bindBuffer( gl.ARRAY_BUFFER, cubeBuffer );
+    gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
+    gl.uniformMatrix4fv(mvLoc, false, flatten(mvg));
+    gl.drawArrays( gl.TRIANGLES, 0, numCubeVertices );
 }
 
 
@@ -524,7 +574,6 @@ function drawCar( mv, color ) {
     gl.uniformMatrix4fv(mvLoc, false, flatten(mv1));
     gl.drawArrays( gl.TRIANGLES, 0, numCubeVertices );
 }
-    
 
 function render()
 {
@@ -534,115 +583,188 @@ function render()
     if ( car1Direction > 360.0 ) car1Direction = 0.0;
     car2Direction -= 0.5;
     if ( car2Direction > 360.0 ) car2Direction = 0.0;
+    planeTheta += 0.5;
+    if ( planeTheta > 360.0) planeTheta = 0.0;
 
     car1XPos = (TRACK_RADIUS+5) * Math.sin( radians(car1Direction) );
     car1YPos = (TRACK_RADIUS+5) * Math.cos( radians(car1Direction) );
     car2XPos = (TRACK_RADIUS-5) * Math.sin( radians(car2Direction) );
     car2YPos = (TRACK_RADIUS-5) * Math.cos( radians(car2Direction) );
+    var oldPlaneXPos = planeXPos;
+    var oldPlaneYPos = planeYPos;
+    planeYPos = 100.0*Math.sin(radians(planeTheta));
+    planeXPos = planeYPos*Math.cos(radians(planeTheta));
+    planeDirection = Math.atan((planeYPos - oldPlaneYPos)/(planeXPos-oldPlaneXPos))*180/Math.PI;
+    if ((45.0 < planeTheta && planeTheta < 135.05) 
+        || (225.0 < planeTheta && planeTheta < 315.05)) planeDirection +=180;
 
     var mv = mat4();
     switch( view ) {
     case 0:
-        mv = lookAt(vec3(0.0, 0.0, 4.0+height), vec3(0.0, 100.0, 4.0), vec3(0.0,0.0,1.0));
+        mv = lookAt(vec3(0.0, 0.0, 4.0+height), vec3(0.0, 500.0, 4.0), vec3(0.0,0.0,1.0));
         mv = mult( mv, rotateZ(personDirection));
         mv = mult( mv, translate(-personXPos, -personYPos, 0.0));
         drawScenery(mv);
+
 	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
 	    mv1 = mult( mv1, rotateZ( -car1Direction ) ) ;
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
-	    drawCar( mv1, RED);
+	    drawCar( mv1, ICELANDAIR);
         drawCar( mv2, YELLOW);
+
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
         break;
     case 1:
         // Distant and stationary viewpoint
 	    mv = lookAt( vec3(250.0, 0.0, 100.0+height), vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 1.0) );
 	    drawScenery( mv );
+
 	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
 	    mv1 = mult( mv1, rotateZ( -car1Direction ) ) ;
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
-	    drawCar( mv1, RED);
+	    drawCar( mv1, ICELANDAIR);
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 2:
 	    // Static viewpoint inside the track; camera follows car
 	    mv = lookAt( vec3(75.0, 0.0, 5.0+height), vec3(car1XPos, car1YPos, 0.0), vec3(0.0, 0.0, 1.0 ) );
 	    drawScenery( mv );
+
 	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
 	    mv1 = mult( mv1, rotateZ( -car1Direction ) ) ;
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
-	    drawCar( mv1, RED);
+	    drawCar( mv1, ICELANDAIR);
         drawCar( mv2, YELLOW);
+
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 3:
 	    // Static viewpoint outside the track; camera follows car
 	    mv = lookAt( vec3(125.0, 0.0, 5.0+height), vec3(car1XPos, car1YPos, 0.0), vec3(0.0, 0.0, 1.0 ) );
 	    drawScenery( mv );
+
 	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
 	    mv1 = mult( mv1, rotateZ( -car1Direction ) ) ;
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
-	    drawCar( mv1, RED);
+	    drawCar( mv1, ICELANDAIR);
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 4:
 	    // Driver's point of view.
 	    mv = lookAt( vec3(-3.0, 0.0, 5.0+height), vec3(12.0, 0.0, 2.0+height), vec3(0.0, 0.0, 1.0 ) );
-	    drawCar( mv, RED );
+	    drawCar( mv, ICELANDAIR );
+
 	    mv = mult( mv, rotateZ( car1Direction ) );
 	    mv = mult( mv, translate(-car1XPos, -car1YPos, 0.0) );
 	    drawScenery( mv );
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 5:
 	    // Drive around while looking at a house at (40, 120)
 	    mv = rotateY( -car1Direction );
 	    mv = mult( mv, lookAt( vec3(3.0, 0.0, 5.0+height), vec3(40.0-car1XPos, 120.0-car1YPos, 0.0), vec3(0.0, 0.0, 1.0 ) ) );
-	    drawCar( mv, RED );
+	    drawCar( mv, ICELANDAIR );
+
 	    mv = mult( mv, rotateZ( car1Direction ) );
 	    mv = mult( mv, translate(-car1XPos, -car1YPos, 0.0) );
 	    drawScenery( mv );
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 6:
 	    // Behind and above the car
 	    mv = lookAt( vec3(-12.0, 0.0, 6.0+height), vec3(15.0, 0.0, 4.0), vec3(0.0, 0.0, 1.0 ) );
-	    drawCar( mv, RED );
+	    drawCar( mv, ICELANDAIR );
+
 	    mv = mult( mv, rotateZ( car1Direction ) );
 	    mv = mult( mv, translate(-car1XPos, -car1YPos, 0.0) );
 	    drawScenery( mv );
+
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 7:
 	    // View backwards looking from another car
 	    mv = lookAt( vec3(25.0, 5.0, 5.0+height), vec3(0.0, 0.0, 2.0), vec3(0.0, 0.0, 1.0 ) );
-	    drawCar( mv, RED );
+	    drawCar( mv, ICELANDAIR );
+
 	    mv = mult( mv, rotateZ( car1Direction ) );
 	    mv = mult( mv, translate(-car1XPos, -car1YPos, 0.0) );
 	    drawScenery( mv );
+
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
 	case 8:
 	    // View from beside the car
 	    mv = lookAt( vec3(2.0, 15.0, 5.0+height), vec3(2.0, 0.0, 2.0), vec3(0.0, 0.0, 1.0 ) );
-	    drawCar( mv, RED );
+	    drawCar( mv, ICELANDAIR );
+
 	    mv = mult( mv, rotateZ( car1Direction ) );
 	    mv = mult( mv, translate(-car1XPos, -car1YPos, 0.0) );
 	    drawScenery( mv );
+
 	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
 	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
         drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
 	    break;
+    case 9:
+        // view from overpass, looking at plane
+	    mv = lookAt( vec3(150.0, 0.0, 6.0+height), vec3(planeXPos, planeYPos, 40.0), vec3(0.0, 0.0, 1.0 ) );
+	    drawScenery( mv );
+
+	    var mv1 = mult( mv, translate( car1XPos, car1YPos, 0.0 ) );
+	    mv1 = mult( mv1, rotateZ( -car1Direction ) ) ;
+	    var mv2 = mult( mv, translate( car2XPos, car2YPos, 0.0 ) );
+	    mv2 = mult( mv2, rotateZ( 180-car2Direction ) ) ;
+	    drawCar( mv1, ICELANDAIR);
+        drawCar( mv2, YELLOW);
+        
+        var mvp = mult(mv, translate(planeXPos, planeYPos, 100.0));
+        mvp = mult(mvp, rotateZ(planeDirection));
+        drawAirlane(mvp);
+        break;
 	    
     }
     
