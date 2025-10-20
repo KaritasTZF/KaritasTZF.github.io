@@ -35,7 +35,6 @@ var materialDiffuse = vec4( 1.0, 0.8, 0.0, 1.0 );
 var materialSpecular = vec4( 1.0, 1.0, 1.0, 1.0 );
 var materialShininess = 50.0;
 
-var ctm;
 var ambientColor, diffuseColor, specularColor;
 
 var modelViewMatrix, projectionMatrix;
@@ -47,9 +46,13 @@ var eye;
 var at = vec3(0.0, 0.0, 0.0);
 var up = vec3(0.0, 1.0, 0.0);
 
+var isBlinn = 0, isBlinnLoc, isBlinnButton, isBlinnDesc;
+
 window.onload = function init() {
 
     canvas = document.getElementById( "gl-canvas" );
+    isBlinnButton = document.getElementById("isBlinnButton");
+    isBlinnDesc = document.getElementById("isBlinnDesc");
 
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
@@ -58,9 +61,6 @@ window.onload = function init() {
     gl.clearColor( 0.9, 1.0, 1.0, 1.0 );
 
     gl.enable(gl.DEPTH_TEST);
-//    gl.enable(gl.CULL_FACE);
-//    gl.cullFace(gl.BACK);
-
 
     var myTeapot = teapot(15);
     myTeapot.scale(0.5, 0.5, 0.5);
@@ -98,6 +98,7 @@ window.onload = function init() {
     modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
     projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
     normalMatrixLoc = gl.getUniformLocation( program, "normalMatrix" );
+    isBlinnLoc = gl.getUniformLocation( program, "isBlinn");
 
     projectionMatrix = perspective( fovy, 1.0, near, far );
     gl.uniformMatrix4fv(projectionMatrixLoc, false, flatten(projectionMatrix) );
@@ -141,6 +142,17 @@ window.onload = function init() {
     render();
 }
 
+function toggleBlinnPhong() {
+    if (isBlinn) {
+        isBlinn = 0; // set phong
+        isBlinnDesc.innerHTML = "Using Phong model";
+        isBlinnButton.value = "Change to Blinn-Phong";
+    } else {
+        isBlinn = 1; // set blinn-phong
+        isBlinnDesc.innerHTML = "Using Blinn-Phong model";
+        isBlinnButton.value = "Change to Phong";
+    }
+}
 
 function render() {
 
@@ -159,6 +171,7 @@ function render() {
 
     gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix) );
     gl.uniformMatrix3fv(normalMatrixLoc, false, flatten(normalMatrix) );
+    gl.uniform1i(isBlinnLoc, isBlinn);
 
     gl.drawArrays( gl.TRIANGLES, 0, points.length );
     window.requestAnimFrame(render);
