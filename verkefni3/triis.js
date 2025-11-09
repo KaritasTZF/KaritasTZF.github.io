@@ -11,16 +11,21 @@ const boxRad = 0.5;
 const rot = Math.PI/2.0; // 90 deg í radíana
 
 // Three.js materials and geometry
-const basicGeometry = new THREE.BoxGeometry(1.0, 1.0, 1.0);
-const basicMaterial = new THREE.MeshPhongMaterial( { color: 0x44aa88 } );
-const redMaterial = new THREE.MeshPhongMaterial( { color: 0xff0000 } );
-const greenMaterial = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-const blueMaterial = new THREE.MeshPhongMaterial( { color: 0x0000ff } );
+const boxGeo = new THREE.BoxGeometry(1.0, 1.0, 1.0);
+const redMaterial = new THREE.MeshPhongMaterial( { color: 0xff0000, polygonOffset: true, polygonOffsetFactor : 1, polygonOffsetUnits : 1 } );
+const orangeMaterial = new THREE.MeshPhongMaterial( { color: 0xff7f00, polygonOffset: true, polygonOffsetFactor : 1, polygonOffsetUnits : 1 } );
+const yellowMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00, polygonOffset: true, polygonOffsetFactor : 1, polygonOffsetUnits : 1 } );
+const greenMaterial = new THREE.MeshPhongMaterial( { color: 0x00ff00, polygonOffset: true, polygonOffsetFactor : 1, polygonOffsetUnits : 1 } );
+const blueMaterial = new THREE.MeshPhongMaterial( { color: 0x0000ff, polygonOffset: true, polygonOffsetFactor : 1, polygonOffsetUnits : 1 } );
+const purpleMaterial = new THREE.MeshPhongMaterial( { color: 0x800080, polygonOffset: true, polygonOffsetFactor : 1, polygonOffsetUnits : 1 } );
+const blackLinesMaterial = new THREE.LineBasicMaterial( { color: 0x000000, transparent: true, opacity: 0.5 } );
+const whiteLinesMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
+const materialArray = [redMaterial, orangeMaterial, yellowMaterial, greenMaterial, blueMaterial, purpleMaterial];
 
 // Skilgreina canvas, camera, controls, render
 const canvas = document.querySelector('#c');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 50, canvas.clientWidth/canvas.clientHeight, 0.1, 1000 );
+const camera = new THREE.PerspectiveCamera( 50, canvas.clientWidth/canvas.clientHeight, 0.5, 100 );
 const controls = new THREE.OrbitControls( camera, canvas );
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
 
@@ -44,7 +49,7 @@ var pause = false;
 var contactFlag = false;
 
 // html
-document.getElementById("points").innerHTML = "0 stig."
+document.getElementById("points").innerHTML = "0 points."
 var points = 0;
 
 // ----------------------------------------------------------------------------
@@ -89,8 +94,8 @@ document.addEventListener("keydown", (event) => {
       break;
 
     case "a" : // rotate around x, check y (floor) and z
-      // first child is center - for other cubes, calculate position after rotation and check boundaries
-      currentTronimo.children.slice(1).forEach(function(cube) {
+      // calculate position after rotation and check boundaries
+      currentTronimo.children.forEach(function(cube) {
         cube.getWorldPosition(pos);
         newpos = new THREE.Vector3(0,-pos.x+currentTronimo.position.x, pos.y-currentTronimo.position.y)
                                 .add(currentTronimo.position);
@@ -100,8 +105,8 @@ document.addEventListener("keydown", (event) => {
       break;
 
     case "z" : // rotate around x, check y (floor) and z
-      // first child is center - for other cubes, calculate position after rotation and check boundaries
-      currentTronimo.children.slice(1).forEach(function(cube) {
+      // calculate position after rotation and check boundaries
+      currentTronimo.children.forEach(function(cube) {
         cube.getWorldPosition(pos);
         newpos = new THREE.Vector3(0,pos.x-currentTronimo.position.x, -pos.y+currentTronimo.position.y)
                                 .add(currentTronimo.position);
@@ -111,30 +116,31 @@ document.addEventListener("keydown", (event) => {
       break;
 
     case "x" : // rotate around y, check x and z
-      // first child is center - for other cubes, calculate position after rotation and check boundaries
-      currentTronimo.children.slice(1).forEach(function(cube) {
+      // calculate position after rotation and check boundaries
+      currentTronimo.children.forEach(function(cube) {
         cube.getWorldPosition(pos);
         newpos = new THREE.Vector3(-pos.z+currentTronimo.position.z,0, pos.x-currentTronimo.position.x)
-                                .add(currentTronimo.position);
-        checkSpaceBlocked(newpos);
-      });
-      if (!contactFlag) currentTronimo.rotation.y += rot;
-      break;
-
-    case "s" : // rotate around y, check x and z
-      // first child is center - for other cubes, calculate position after rotation and check boundaries
-      currentTronimo.children.slice(1).forEach(function(cube) {
-        cube.getWorldPosition(pos);
-        newpos = new THREE.Vector3(pos.z-currentTronimo.position.z,0, -pos.x+currentTronimo.position.x)
                                 .add(currentTronimo.position);
         checkSpaceBlocked(newpos);
       });
       if (!contactFlag) currentTronimo.rotation.y -= rot;
       break;
 
-    case "d" : // rotate around z, check x and y (floor) 
+    case "s" : // rotate around y, check x and z
       // first child is center - for other cubes, calculate position after rotation and check boundaries
-      currentTronimo.children.slice(1).forEach(function(cube) {
+      currentTronimo.children.forEach(function(cube) {
+        cube.getWorldPosition(pos);
+        newpos = new THREE.Vector3(pos.z-currentTronimo.position.z,0, -pos.x+currentTronimo.position.x)
+                                .add(currentTronimo.position);
+        console.log(newpos);
+        checkSpaceBlocked(newpos);
+      });
+      if (!contactFlag) currentTronimo.rotation.y += rot;
+      break;
+
+    case "d" : // rotate around z, check x and y (floor) 
+      // calculate position after rotation and check boundaries
+      currentTronimo.children.forEach(function(cube) {
         cube.getWorldPosition(pos);
         newpos = new THREE.Vector3(-pos.y+currentTronimo.position.y, pos.x-currentTronimo.position.x,0)
                                 .add(currentTronimo.position);
@@ -144,8 +150,8 @@ document.addEventListener("keydown", (event) => {
       break;
 
     case "c" : // rotate around z, check x and y (floor) 
-      // first child is center - for other cubes, calculate position after rotation and check boundaries
-      currentTronimo.children.slice(1).forEach(function(cube) {
+      // calculate position after rotation and check boundaries
+      currentTronimo.children.forEach(function(cube) {
         cube.getWorldPosition(pos);
         newpos = new THREE.Vector3(pos.y-currentTronimo.position.y, -pos.x+currentTronimo.position.x,0)
                                 .add(currentTronimo.position);
@@ -170,19 +176,13 @@ document.addEventListener("keydown", (event) => {
 // returns true if move to pos is illegal, false if the space is free and within boundaries
 function checkSpaceBlocked(pos) {
   if (pos.x < minX || pos.x > maxX || pos.y < minY || pos.z < minZ || pos.z > maxZ  ) {
-          console.log("returning true");
     contactFlag = true;
   } else {
     var h = Math.max(Math.round(pos.y-boxRad+10),0); // get height layer
     deadLayers[h].children.forEach( function(deadCube) {
-      console.log(`checking layer ${h}, deadcube at x ${deadCube.position.x} z ${deadCube.position.z}`);
-      console.log(`difference is ${Math.abs(pos.x - deadCube.position.x)} and ${Math.abs(pos.z - deadCube.position.z)}`);
       if (Math.abs(pos.x - deadCube.position.x) < boxRad 
         && Math.abs(pos.z - deadCube.position.z) < boxRad) {
-          console.log("returning true");
         contactFlag = true;
-      } else{
-          console.log("no set");
       }
     });
   }
@@ -193,57 +193,99 @@ function checkSpaceBlocked(pos) {
 
 function init() {
   camera.position.set(0.0, 18.0, -18.0);
+  scene.background = new THREE.Color(0x98b6d4);
     
   // Skilgreina ljósgjafa og bæta honum í sviðsnetið
   const light1 = new THREE.DirectionalLight(0xFFFFFF, 1);
-  const light2 = new THREE.AmbientLight(0x303030, 1);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.5);
   light1.position.set(5, 10, -8);
   scene.add(light1);
-  scene.add(light2);
+  scene.add(ambient);
 
   // big cube shows boundaries
-  const lineGeometry = new THREE.BoxGeometry(6.0, 20, 6.0);
-  const bigMaterial = new THREE.MeshStandardMaterial({wireframe: true});
-  const bigcube = new THREE.Mesh( lineGeometry, bigMaterial );
+  const bigGeometry = new THREE.EdgesGeometry(new THREE.BoxGeometry(6.0, 20, 6.0));
+  const bigcube = new THREE.LineSegments( bigGeometry, whiteLinesMaterial );
   scene.add( bigcube );
 
+  // golf
   const planeGeo = new THREE.PlaneGeometry(60, 60);
-  const planeMaterial = new THREE.MeshPhongMaterial({color: 0xa0a0a0});
+  const planeMaterial = new THREE.MeshPhongMaterial({color: 0x2e2e2e});
   const plane = new THREE.Mesh(planeGeo, planeMaterial);
   plane.rotation.x = -rot;
-  plane.position.set(0.0, -10.0, 0.0);
+  plane.position.set(0.0, -10.01, 0.0);
   scene.add(plane);
 
+  scenery();
+
   newTromino();
-  initState(); //mostly for testing - start in a state
 }
 
-function initState() {
-  for (let i = 0; i < 33; i++) {
-    const basicCube0 = new THREE.Mesh( basicGeometry, redMaterial );
-    basicCube0.position.set(boxRad+2.0, 0.0, boxRad+2.0);
-    const basicCube1 = new THREE.Mesh( basicGeometry, redMaterial );
-    basicCube1.position.set(boxRad+2.0, 0.0, boxRad+2.0);
-    //deadLayers[0].add(basicCube0);
-    //deadLayers[1].add(basicCube1);
+function scenery() {
+  var radius;
+  var theta;
+  var angle;
+  var mat;
+  for (let i = 0; i < 10; i++) {
+    radius = Math.random()*5+20;
+    theta = Math.random()*Math.PI*2;
+    angle = Math.floor(Math.random()*4)*rot;
+    mat = materialArray[Math.floor(Math.random()*6)];
+    var group = new THREE.Group();
+      if (Math.floor(Math.random()*2) === 1) {
+      // I - type tronimo
+      group.add(newCube(0.0, 0.0, 0.0, mat));
+      group.add(newCube(1.0, 0.0, 0.0, mat));
+      group.add(newCube(-1.0, 0.0, 0.0, mat));
+    } else {
+      // L-type tronimo
+      group.add(newCube(0.0, 0.0, 0.0, mat));
+      group.add(newCube(0.0, 0.0, 1.0, mat));
+      group.add(newCube(1.0, 0.0, 0.0, mat));
+    }
+    group.position.set(radius*Math.cos(theta), -9.5, radius* Math.sin(theta));
+    group.rotation.set(0, angle, 0);
+    scene.add(group);
   }
-  scene.add(deadLayers[0]);
-  scene.add(deadLayers[1]);
+  for (let i = 0; i < 10; i++) {
+    radius = Math.random()*10+9;
+    theta = Math.random()*Math.PI*2;
+    angle = Math.random()*Math.PI*2;
+    mat = materialArray[Math.floor(Math.random()*6)];
+    var cube = newCube(radius*Math.cos(theta), -9.5, radius* Math.sin(theta), mat);
+    cube.rotation.set(0, angle, 0);
+    scene.add(cube);
+  }
 }
 
 function newCube(x, y, z, mat) {
   // Búa til tening með Phong áferð (Phong material) og bæta í sviðsnetið
-  const basicCube = new THREE.Mesh( basicGeometry, mat );
+  const basicCube = new THREE.Mesh( boxGeo, mat );
   basicCube.position.set(x, y, z);
+  const wireCube = new THREE.LineSegments(new THREE.EdgesGeometry(boxGeo), blackLinesMaterial);
+  basicCube.add(wireCube);
   return basicCube;
 }
 
 function newTromino() {
   currentTronimo.children = [];
+  // choose random middle of the 4 middle tiles
+  // choose rotation around y (ill choose x and z rotations to be flat in y axis)
+  var mat = materialArray[Math.floor(Math.random()*6)]; // choose random color material
+  // random middle
+  //currentTronimo.position.set(boxRad - Math.floor(Math.random()*2), maxY -boxRad, boxRad-Math.floor(Math.random()*2));
   currentTronimo.position.set(boxRad, maxY -boxRad, boxRad);
-  currentTronimo.add(newCube(0.0, 0.0, 0.0, basicMaterial));
-  currentTronimo.add(newCube(1.0, 0.0, 0.0, greenMaterial));
-  currentTronimo.add(newCube(-1.0, 0.0, 0.0, blueMaterial));
+  currentTronimo.rotation.set(0,Math.floor(Math.random()*4)*rot,0); // random rotation
+  if (Math.floor(Math.random()*2) === 1) {
+    // I - type tronimo
+    currentTronimo.add(newCube(0.0, 0.0, 0.0, mat));
+    currentTronimo.add(newCube(1.0, 0.0, 0.0, mat));
+    currentTronimo.add(newCube(-1.0, 0.0, 0.0, mat));
+  } else {
+    // L-type tronimo
+    currentTronimo.add(newCube(0.0, 0.0, 0.0, mat));
+    currentTronimo.add(newCube(0.0, 0.0, 1.0, mat));
+    currentTronimo.add(newCube(1.0, 0.0, 0.0, mat));
+  }
   scene.add(currentTronimo);
 }
 
@@ -265,7 +307,7 @@ function contact() {
     var h = Math.round(pos.y-boxRad+10);
 
     //check if at top - game over
-    if (pos.y >= maxY) {
+    if (pos.y >= maxY - boxRad) {
       gameOver();
     } 
     // else move it from current to dead
@@ -274,7 +316,6 @@ function contact() {
       // set xz to world coords (deadLayer.xz is 0.0,0.0, so relative coords are the same as world coords)
       cube.position.x = pos.x; 
       cube.position.z = pos.z; 
-      cube.material = redMaterial;
       deadLayers[h].add(cube);
       activeLayers.add(h);
     }
@@ -334,6 +375,7 @@ let animationId;
 function gameOver() {
   cancelAnimationFrame(animationId);
   console.log("game over");
+  document.getElementById("points").innerHTML = "Game over. You got " + points + "  points."
 }
 
 init();
