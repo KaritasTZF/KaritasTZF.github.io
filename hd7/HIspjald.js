@@ -16,7 +16,7 @@ var spinY = 0;
 var origX;
 var origY;
 var origColMove;
-var colorshift = vec4(1.0, 1.0, 1.0, 0.5);
+var colorshift = vec4(0.0, 0.0, 0.0, 0.0);
 
 var zDist = 5.0;
 
@@ -138,7 +138,7 @@ window.onload = function init() {
             origY = e.clientY;
         }
         if (reddening || greening || blueing) {
-            colorshift[3] += (origColMove - e.clientY)/canvas.height;
+            colorshift[3] += 2.0*(origColMove - e.clientY)/canvas.height;
             origColMove = e.clientY;
         } 
     } );
@@ -185,15 +185,15 @@ window.onload = function init() {
         switch( e.keyCode ) {
             case 66:    // b key
                 blueing = false;
-                colorshift = vec4(0.0, 0.0, 0.0, 0.5);
+                colorshift = vec4(0.0, 0.0, 0.0, 0.0);
                 break;
             case 71:    // g key
                 greening = false;
-                colorshift = vec4(0.0, 0.0, 0.0, 0.5);
+                colorshift = vec4(0.0, 0.0, 0.0, 0.0);
                 break;
             case 82:    // r key
                 reddening = false;
-                colorshift = vec4(0.0, 0.0, 0.0, 0.5);
+                colorshift = vec4(0.0, 0.0, 0.0, 0.0);
                 break;
          }
      });

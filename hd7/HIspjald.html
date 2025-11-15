@@ -32,8 +32,7 @@ uniform vec4 colorshift;
 
 void main()
 {
-    float a = 2.0*colorshift.a - 1.0;
-    gl_FragColor = texture2D( texture, fTexCoord )*(1.0-a) + colorshift*a;
+    gl_FragColor = texture2D( texture, fTexCoord )*(1.0-colorshift.a) + colorshift*colorshift.a;
 }
 </script>
 
