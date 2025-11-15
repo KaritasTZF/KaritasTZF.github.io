@@ -1,11 +1,3 @@
-/////////////////////////////////////////////////////////////////
-//    Sýnidæmi í Tölvugrafík
-//     Einföld útgáfa af mynsturvörpun.  Tvívítt spjald
-//     skilgreint og varpað á það mynd sem er lesin inn.
-//     Hægt að snúa spjaldinu og færa til.
-//
-//    Hjálmtýr Hafsteinsson, október 2025
-/////////////////////////////////////////////////////////////////
 var canvas;
 var gl;
 
@@ -23,11 +15,18 @@ var spinX = 0;
 var spinY = 0;
 var origX;
 var origY;
+var origColMove;
+var colorshift = vec4(1.0, 1.0, 1.0, 0.5);
 
 var zDist = 5.0;
 
 var proLoc;
 var mvLoc;
+var colorLoc;
+
+var reddening = false;
+var greening = false;
+var blueing = false;
 
 //    4-------3  2
 //    |     /  / |
@@ -113,6 +112,7 @@ window.onload = function init() {
 
     proLoc = gl.getUniformLocation( program, "projection" );
     mvLoc = gl.getUniformLocation( program, "modelview" );
+    colorLoc = gl.getUniformLocation( program, "colorshift");
 
     var proj = perspective( 50.0, 1.0, 0.2, 100.0 );
     gl.uniformMatrix4fv(proLoc, false, flatten(proj));
@@ -137,6 +137,10 @@ window.onload = function init() {
             origX = e.clientX;
             origY = e.clientY;
         }
+        if (reddening || greening || blueing) {
+            colorshift[3] += (origColMove - e.clientY)/canvas.height;
+            origColMove = e.clientY;
+        } 
     } );
     
     // Event listener for keyboard
@@ -148,8 +152,51 @@ window.onload = function init() {
             case 40:	// niður ör
                 zDist -= 0.1;
                 break;
+            case 66:    // b key
+                if (e.repeat) return; 
+                // only on the start of pressing b
+                reddening = false;
+                greening = false;
+                blueing = true;
+                origColMove = 0;
+                colorshift = vec4(0.0, 0.0, 1.0, 1.0);
+                break;
+            case 71:    // g key
+                if (e.repeat) return;
+                // only on the start of pressing g
+                reddening = false;
+                greening = true;
+                blueing = false;
+                origColMove = 0;
+                colorshift = vec4(0.0, 1.0, 0.0, 1.0);
+                break;
+            case 82:    // r key
+                if (e.repeat) return;
+                // only on the start of pressing r
+                reddening = true;
+                greening = false;
+                blueing = false;
+                origColMove = 0;
+                colorshift = vec4(1.0, 0.0, 0.0, 1.0);
+                break;
          }
      }  );  
+     window.addEventListener("keyup", function(e) {
+        switch( e.keyCode ) {
+            case 66:    // b key
+                blueing = false;
+                colorshift = vec4(0.0, 0.0, 0.0, 0.5);
+                break;
+            case 71:    // g key
+                greening = false;
+                colorshift = vec4(0.0, 0.0, 0.0, 0.5);
+                break;
+            case 82:    // r key
+                reddening = false;
+                colorshift = vec4(0.0, 0.0, 0.0, 0.5);
+                break;
+         }
+     });
 
     // Event listener for mousewheel
      window.addEventListener("wheel", function(e){
@@ -173,6 +220,7 @@ var render = function(){
     mv = mult( mv, rotateY( spinY ) );
     
     gl.uniformMatrix4fv(mvLoc, false, flatten(mv));
+    gl.uniform4fv(colorLoc, flatten(colorshift));
 
     gl.drawArrays( gl.TRIANGLES, 0, numVertices );
 
