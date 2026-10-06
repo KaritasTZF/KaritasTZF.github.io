@@ -3,7 +3,7 @@
 #df[['fi','en','type']] = df[['fi','en','type']].map(str.lower) #TODO lowercase
 import pandas as pd
 
-df = pd.read_csv("vocab.csv",encoding='utf-8',index_col=0) #read from csv
+df = pd.read_csv("suomi/vocab.csv",encoding='utf-8',index_col=0) #read from csv
 #df = pd.read_json("vocab.json",encoding='utf-8').T #read from json
 
 # -- data work
@@ -20,5 +20,5 @@ print(list(df['primary'].unique()))
 # -- output
 
 print(df)
-df.T.to_json("vocab.json",force_ascii=False,indent=4)
-df.to_csv("vocab.csv")
+df.T.to_json("suomi/vocab.json",force_ascii=False,indent=4)
+df.to_csv("suomi/vocab.csv")

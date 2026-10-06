@@ -10,8 +10,8 @@ Use this to edit the data. in 'fi' and 'en' columns, if ';' is used as a delimit
 
 Course refers to Finnish 1, Finnish 2, etc. 
 
-Type: noun, verb, etc.
+Type: substantiivi (noun), verbi, adjektiivi, etc, phrase, "idk" (the small words like or,and,else,this. or i dont know), fragment (suffix or prefix meaning something esim epä-, -iton)
 
-Primary: If the word was the focus of a slide or lesson, it is primary, if it appeared once as part of an example, then it is secondary. Null values are assumed primary.
+Primary: Arbitrary, but generally if the word was said more than once in class, primary, if it appears in an example once, then its secondary. Null values are assumed primary.
 
 Verb type: null for nonverbs, integer value.
