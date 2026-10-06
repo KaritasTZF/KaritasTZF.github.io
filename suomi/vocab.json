@@ -1,0 +1,730 @@
+{
+    "0":{
+        "fi":"aivot",
+        "en":"brain",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "1":{
+        "fi":"allekirjoitus",
+        "en":"signature",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "2":{
+        "fi":"apua",
+        "en":"help",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "3":{
+        "fi":"asua",
+        "en":"live",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":1.0
+    },
+    "4":{
+        "fi":"ei kovin hyvää",
+        "en":"i'm not so good;im not so good",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "5":{
+        "fi":"ei mitään erityistä;ei mitään erikoista",
+        "en":"nothing special",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "6":{
+        "fi":"entä sulle",
+        "en":"what about you;and you",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "7":{
+        "fi":"eronnut",
+        "en":"divorced",
+        "course":1,
+        "type":"adjective",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "8":{
+        "fi":"essee",
+        "en":"essay",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "9":{
+        "fi":"etunimini",
+        "en":"first name;given name",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "10":{
+        "fi":"hauska tavata",
+        "en":"nice to meet you",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "11":{
+        "fi":"he",
+        "en":"they",
+        "course":1,
+        "type":"pronoun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "12":{
+        "fi":"henkilötunnus",
+        "en":"social security code;social security number;id;identity code",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "13":{
+        "fi":"huomenta",
+        "en":"morning",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "14":{
+        "fi":"hyvää huomenta",
+        "en":"good morning",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "15":{
+        "fi":"hän",
+        "en":"she;he;they",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "16":{
+        "fi":"ihan hyvää",
+        "en":"i'm quite fine;im quite fine",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "17":{
+        "fi":"ilta",
+        "en":"evening",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "18":{
+        "fi":"jutella",
+        "en":"chat",
+        "course":1,
+        "type":"verb",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "19":{
+        "fi":"kandiopiskelija",
+        "en":"bachelor's student;bachelors student;bachelor student",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "20":{
+        "fi":"kansalaissus",
+        "en":"citizenship;nationality",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "21":{
+        "fi":"kieli",
+        "en":"language",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "22":{
+        "fi":"kirjasto",
+        "en":"library",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "23":{
+        "fi":"kirjo",
+        "en":"book",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "24":{
+        "fi":"kitos hyvää",
+        "en":"i'm fine thank you;im fine thank you",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "25":{
+        "fi":"kiva",
+        "en":"nice;cool",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "26":{
+        "fi":"kotitehtävä",
+        "en":"homework",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "27":{
+        "fi":"koto",
+        "en":"home",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "28":{
+        "fi":"koulutusohjelma",
+        "en":"study programme;study program",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "29":{
+        "fi":"kuka",
+        "en":"who",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "30":{
+        "fi":"kurssi",
+        "en":"course",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "31":{
+        "fi":"kysyä",
+        "en":"ask",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "32":{
+        "fi":"luento",
+        "en":"lecture",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "33":{
+        "fi":"läppäri",
+        "en":"laptop",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "34":{
+        "fi":"maa",
+        "en":"country;land",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "35":{
+        "fi":"maisteriopiskelija",
+        "en":"master's student;masters student;master student",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "36":{
+        "fi":"matkustaa",
+        "en":"travel",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":1.0
+    },
+    "37":{
+        "fi":"me",
+        "en":"we",
+        "course":1,
+        "type":"pronoun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "38":{
+        "fi":"miksi",
+        "en":"why",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "39":{
+        "fi":"mikä",
+        "en":"what",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "40":{
+        "fi":"minkämaalainen",
+        "en":"nationality;country",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "41":{
+        "fi":"minä;mä",
+        "en":"me;i",
+        "course":1,
+        "type":"pronoun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "42":{
+        "fi":"missä",
+        "en":"in where;where",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "43":{
+        "fi":"mistä",
+        "en":"from where;where",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "44":{
+        "fi":"miten",
+        "en":"how",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "45":{
+        "fi":"miten menee",
+        "en":"how is it going",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "46":{
+        "fi":"mitä",
+        "en":"what",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "47":{
+        "fi":"mitä kuuluu;mitä sulle kuuluu",
+        "en":"how are you",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "48":{
+        "fi":"mukaan",
+        "en":"to go;along;with",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "49":{
+        "fi":"mä olen väsynyt",
+        "en":"i'm tired;im tired",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "50":{
+        "fi":"naimaton",
+        "en":"unmarried",
+        "course":1,
+        "type":"adjective",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "51":{
+        "fi":"naimisissa",
+        "en":"married",
+        "course":1,
+        "type":"adjective",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "52":{
+        "fi":"nyt",
+        "en":"now",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "53":{
+        "fi":"olla",
+        "en":"be",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "54":{
+        "fi":"opiskella",
+        "en":"study",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "55":{
+        "fi":"osoite",
+        "en":"address",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "56":{
+        "fi":"peruna",
+        "en":"potato",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "57":{
+        "fi":"postinumero",
+        "en":"post code",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "58":{
+        "fi":"puhelin",
+        "en":"phone",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "59":{
+        "fi":"puhua",
+        "en":"speak",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":1.0
+    },
+    "60":{
+        "fi":"päiväys",
+        "en":"date",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "61":{
+        "fi":"päivää",
+        "en":"afternoon",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "62":{
+        "fi":"pääkaupunki",
+        "en":"capital city;capital",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "63":{
+        "fi":"rakastaa",
+        "en":"love",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":1.0
+    },
+    "64":{
+        "fi":"saari",
+        "en":"island",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "65":{
+        "fi":"sanoa",
+        "en":"say",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "66":{
+        "fi":"se",
+        "en":"it",
+        "course":1,
+        "type":"pronoun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "67":{
+        "fi":"sinä;sä",
+        "en":"you",
+        "course":1,
+        "type":"pronoun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "68":{
+        "fi":"siviilisäty",
+        "en":"marital status;marriage status",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "69":{
+        "fi":"sukunimi",
+        "en":"last name;surname",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "70":{
+        "fi":"syntymäaika;henkilötietona",
+        "en":"birth date",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "71":{
+        "fi":"syntymäpaikka",
+        "en":"place of birth;birthplace",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "72":{
+        "fi":"tarkoittaa",
+        "en":"mean",
+        "course":1,
+        "type":"verb",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "73":{
+        "fi":"te",
+        "en":"yall;you;youse",
+        "course":1,
+        "type":"pronoun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "74":{
+        "fi":"tentti",
+        "en":"exam",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "75":{
+        "fi":"terveydeksi",
+        "en":"bless you",
+        "course":1,
+        "type":"phrase",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "76":{
+        "fi":"toimi",
+        "en":"work;job;task",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "77":{
+        "fi":"toistaa",
+        "en":"repeat",
+        "course":1,
+        "type":"verb",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "78":{
+        "fi":"tosi hyvää;todella hyvää",
+        "en":"i'm very good;im very good",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "79":{
+        "fi":"tutkia",
+        "en":"research",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "80":{
+        "fi":"tutkintoopiskelija",
+        "en":"degree student",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "81":{
+        "fi":"työ",
+        "en":"work",
+        "course":1,
+        "type":"noun",
+        "primary":"secondary",
+        "verb type":null
+    },
+    "82":{
+        "fi":"tänään",
+        "en":"today",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "83":{
+        "fi":"täällä",
+        "en":"for here",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "84":{
+        "fi":"venäjä",
+        "en":"russia",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "85":{
+        "fi":"voi ei",
+        "en":"oh no",
+        "course":1,
+        "type":"phrase",
+        "primary":"primary",
+        "verb type":null
+    },
+    "86":{
+        "fi":"vähän",
+        "en":"little;few;a bit;a little",
+        "course":1,
+        "type":"adverb",
+        "primary":"primary",
+        "verb type":null
+    },
+    "87":{
+        "fi":"yliopisto",
+        "en":"university",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "88":{
+        "fi":"ymmärtää",
+        "en":"understand",
+        "course":1,
+        "type":"verb",
+        "primary":"primary",
+        "verb type":1.0
+    },
+    "89":{
+        "fi":"yö",
+        "en":"night",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    },
+    "90":{
+        "fi":"äidinkieli",
+        "en":"mother tounge;first language;native tounge;native language",
+        "course":1,
+        "type":"noun",
+        "primary":"primary",
+        "verb type":null
+    }
+}
