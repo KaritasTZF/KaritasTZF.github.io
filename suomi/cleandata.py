@@ -10,7 +10,7 @@ df = pd.read_csv("suomi/vocab.csv",encoding='utf-8',index_col=0) #read from csv
 df[['course','verb type']] = df[['course','verb type']].astype('Int64') #cast to null+int
 df = df.map(lambda x: x.strip().lower() if isinstance(x, str) else x) # cast to lowercase, strip end spaces
 
-df = df[~df.duplicated(subset=['fi','en'],keep='first')] #toss duplicates
+df = df[~df.duplicated(subset=['fi'],keep='first')] #toss duplicates
 df = df.sort_values(by="fi",ignore_index=True) # sort
 
 # -- checks
@@ -19,6 +19,5 @@ print(list(df['primary'].unique()))
 
 # -- output
 
-print(df)
 df.T.to_json("suomi/vocab.json",force_ascii=False,indent=4)
 df.to_csv("suomi/vocab.csv")

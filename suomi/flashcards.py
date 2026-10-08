@@ -3,18 +3,17 @@
 #better stats
 
 import pandas as pd
-import sys
 
 # flashcards.py N primaryonly courses types 
 #     defaults: 50 True "all" "all"
 
-df = pd.read_json("vocab.json",encoding='utf-8').T.sample(frac=1).reset_index(drop=True)
+df = pd.read_json("suomi/vocab.json",encoding='utf-8').T.sample(frac=1).reset_index(drop=True)
 attempts = []
 success = []
 
 for row in df.itertuples():
-    qword = row.en.split(';')[0] # type: ignore #question word
-    awords = row.fi.split(';') # type: ignore #answer words
+    qword = row.en.split(';')[0] # type: ignore . question word
+    awords = row.fi.split(';') # type: ignore . answer words
 
     print()
     a = 0
