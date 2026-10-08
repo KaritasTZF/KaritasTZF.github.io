@@ -2,1909 +2,1900 @@
     "0":{
         "fi":"-iton",
         "en":"-free",
-        "course":1.0,
+        "course":1,
         "type":"fragment",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "1":{
         "fi":"aamu",
         "en":"morning",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "2":{
         "fi":"aine",
         "en":"always",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "3":{
         "fi":"aivot",
         "en":"brain",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "4":{
         "fi":"alennus",
         "en":"discount",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "5":{
         "fi":"alkaa",
         "en":"begin",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "6":{
         "fi":"allekirjoitus",
         "en":"signature",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "7":{
         "fi":"apua",
         "en":"help",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "8":{
         "fi":"asua",
         "en":"live",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "9":{
         "fi":"aukioloajat",
         "en":"opening hours;opening time",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "10":{
         "fi":"avoinna;auki",
         "en":"open",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "11":{
         "fi":"ei kovin hyvää",
         "en":"i'm not so good;im not so good",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "12":{
         "fi":"ei mitään erityistä;ei mitään erikoista",
         "en":"nothing special",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "13":{
         "fi":"eilen",
         "en":"yesterday",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "14":{
         "fi":"entä sulle",
         "en":"what about you;and you",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "15":{
         "fi":"eronnut",
         "en":"divorced",
-        "course":1.0,
+        "course":1,
         "type":"adjektiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "16":{
         "fi":"essee",
         "en":"essay",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "17":{
         "fi":"etsiä",
         "en":"look;search;seek;look for",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "18":{
         "fi":"etunimini",
         "en":"first name;given name",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "19":{
         "fi":"haluaisin",
         "en":"i wouldn't say no to;i would like;i would like to have;i wouldnt say no to",
-        "course":1.0,
+        "course":1,
         "type":"idk",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "20":{
         "fi":"haluta",
         "en":"want",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":4.0
+        "subject_category":null,
+        "verb_type":4.0
     },
     "21":{
         "fi":"hauska tavata",
         "en":"nice to meet you",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "22":{
         "fi":"he",
         "en":"they",
-        "course":1.0,
+        "course":1,
         "type":"pronominit",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "23":{
         "fi":"hedelmät",
         "en":"fruit",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "24":{
         "fi":"henkilötunnus",
         "en":"social security code;social security number;id;identity code",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "25":{
         "fi":"herne",
         "en":"pea;peas",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "26":{
         "fi":"hillo",
         "en":"jam",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "27":{
         "fi":"huomenna",
         "en":"tomorrow",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "28":{
         "fi":"huomenta",
         "en":"morning",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "29":{
         "fi":"hyvää huomenta",
         "en":"good morning",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "30":{
         "fi":"hän",
         "en":"she;he;they",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "31":{
         "fi":"ihan hyvää",
         "en":"i'm quite fine;im quite fine",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "32":{
         "fi":"ilman",
         "en":"without",
-        "course":1.0,
+        "course":1,
         "type":"prepositio",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "33":{
         "fi":"ilta",
         "en":"evening",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "34":{
         "fi":"iso;suuri",
         "en":"big;large",
-        "course":1.0,
+        "course":1,
         "type":"adjektiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "35":{
         "fi":"istua",
         "en":"sit",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "36":{
         "fi":"joka",
         "en":"every",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "37":{
         "fi":"joskus",
         "en":"sometimes",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "38":{
         "fi":"juoda",
         "en":"drink",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":2.0
+        "subject_category":null,
+        "verb_type":2.0
     },
     "39":{
         "fi":"juoma",
         "en":"drink",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "40":{
         "fi":"jutella",
         "en":"chat",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "41":{
         "fi":"jälkiruoka",
         "en":"dessert",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "42":{
         "fi":"jäätelö",
         "en":"ice cream",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "43":{
         "fi":"kaali",
         "en":"cabbage",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "44":{
         "fi":"kahvi",
         "en":"coffee",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "45":{
         "fi":"kakku",
         "en":"cake",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "46":{
         "fi":"kala",
         "en":"fish",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "47":{
         "fi":"kana",
         "en":"chicken",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "48":{
         "fi":"kandiopiskelija",
         "en":"bachelor's student;bachelors student;bachelor student",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "49":{
         "fi":"kansalaissus",
         "en":"citizenship;nationality",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "50":{
         "fi":"kanssa",
         "en":"with",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "51":{
         "fi":"karkki",
         "en":"candy",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "52":{
         "fi":"katkarapu",
         "en":"shrimp;prawn",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "53":{
         "fi":"katsoa",
         "en":"look",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "54":{
         "fi":"keitto",
         "en":"soup",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "55":{
         "fi":"keksiä",
         "en":"invent",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "56":{
         "fi":"kertoa",
         "en":"tell",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "57":{
         "fi":"keskivikko",
         "en":"wednesday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "58":{
         "fi":"kieli",
         "en":"language",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "59":{
         "fi":"kinkku",
         "en":"ham",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "60":{
         "fi":"kirjasto",
         "en":"library",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "61":{
         "fi":"kirjo",
         "en":"book",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "62":{
         "fi":"kirjoittaa",
         "en":"write",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "63":{
         "fi":"kirsikka",
         "en":"cherry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "64":{
         "fi":"kitos hyvää",
         "en":"i'm fine thank you;im fine thank you",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "65":{
         "fi":"kiva",
         "en":"nice;cool",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "66":{
         "fi":"korvapuusti",
         "en":"cinnamon roll;cinnamon bun",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "67":{
         "fi":"kotitehtävä",
         "en":"homework",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "68":{
         "fi":"koto",
         "en":"home",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "69":{
         "fi":"koulutusohjelma",
         "en":"study programme;study program",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "70":{
         "fi":"kuka",
         "en":"who",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "71":{
         "fi":"kukkakaali",
         "en":"cauliflower",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "72":{
         "fi":"kurkku",
         "en":"cucumber",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "73":{
         "fi":"kurssi",
         "en":"course",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "74":{
         "fi":"kysyä",
         "en":"ask",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "75":{
         "fi":"lakka",
         "en":"cloudberry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "76":{
         "fi":"lauantai",
         "en":"saturday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "77":{
         "fi":"leipoa",
         "en":"bake",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "78":{
         "fi":"leipä",
         "en":"bread",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "79":{
         "fi":"lentää",
         "en":"fly",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "80":{
         "fi":"lihu",
         "en":"meat",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "81":{
         "fi":"limu",
         "en":"soda",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "82":{
         "fi":"lisää",
         "en":"more",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "83":{
         "fi":"loppuvikkoa",
         "en":"end of week",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "84":{
         "fi":"luento",
         "en":"lecture",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "85":{
         "fi":"lukea",
         "en":"read",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "86":{
         "fi":"luumu",
         "en":"plum",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "87":{
         "fi":"lähteä",
         "en":"leave",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "88":{
         "fi":"läppäri",
         "en":"laptop",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "89":{
         "fi":"maa",
         "en":"country;land",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "90":{
         "fi":"maanantai",
         "en":"monday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "91":{
         "fi":"maisteriopiskelija",
         "en":"master's student;masters student;master student",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "92":{
         "fi":"maito",
         "en":"milk",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "93":{
         "fi":"makkara",
         "en":"sausage",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "94":{
         "fi":"mansikka",
         "en":"strawberry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "95":{
         "fi":"marjat",
         "en":"berries;berry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "96":{
         "fi":"matkustaa",
         "en":"travel",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "97":{
         "fi":"mausteet",
         "en":"seasoning;aromatics",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "98":{
         "fi":"me",
         "en":"we",
-        "course":1.0,
+        "course":1,
         "type":"pronominit",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "99":{
         "fi":"mehu",
         "en":"juice",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "100":{
         "fi":"miksi",
         "en":"why",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "101":{
         "fi":"milloin",
         "en":"when",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "102":{
         "fi":"minkämaalainen",
         "en":"nationality;country",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "103":{
         "fi":"minä;mä",
         "en":"me;i",
-        "course":1.0,
+        "course":1,
         "type":"pronominit",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "104":{
         "fi":"missä",
         "en":"in where;where",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "105":{
         "fi":"mistä",
         "en":"from where;where",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "106":{
         "fi":"miten",
         "en":"how",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "107":{
         "fi":"miten menee",
         "en":"how is it going",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "108":{
         "fi":"mitä kuuluu;mitä sulle kuuluu",
         "en":"how are you",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "109":{
         "fi":"mitä;mikä",
         "en":"what",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "110":{
         "fi":"muistaa",
         "en":"remember",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "111":{
         "fi":"mukaan",
         "en":"to go;along;with",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "112":{
         "fi":"muna",
         "en":"egg",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "113":{
         "fi":"muroja",
         "en":"cereal",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "114":{
         "fi":"mustikka",
         "en":"blueberry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "115":{
         "fi":"muu",
         "en":"other;else",
-        "course":1.0,
+        "course":1,
         "type":"idk",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "116":{
         "fi":"mä olen väsynyt",
         "en":"i'm tired;im tired",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "117":{
         "fi":"naimaton",
         "en":"unmarried",
-        "course":1.0,
+        "course":1,
         "type":"adjektiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "118":{
         "fi":"naimisissa",
         "en":"married",
-        "course":1.0,
+        "course":1,
         "type":"adjektiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "119":{
         "fi":"nakki",
         "en":"frankfurter;wiener",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "120":{
         "fi":"nauraa",
         "en":"laugh",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "121":{
         "fi":"nukkua",
         "en":"sleep",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "122":{
         "fi":"nyt",
         "en":"now",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "123":{
         "fi":"odottaa",
         "en":"wait",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "124":{
         "fi":"olla",
         "en":"be",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "125":{
         "fi":"olut",
         "en":"beer",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "126":{
         "fi":"omena",
         "en":"apple",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "127":{
         "fi":"onko sulla",
         "en":"do you have",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "128":{
         "fi":"opiskella",
         "en":"study",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "129":{
         "fi":"oppia",
         "en":"learn",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "130":{
         "fi":"osoite",
         "en":"address",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "131":{
         "fi":"ostaa",
         "en":"buy",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "132":{
         "fi":"ottaa",
         "en":"take;grab",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "133":{
         "fi":"papu",
         "en":"bean",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "134":{
         "fi":"perjantai",
         "en":"friday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "135":{
         "fi":"persikka",
         "en":"peach",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "136":{
         "fi":"peruna",
         "en":"potato",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "137":{
         "fi":"pieni",
         "en":"small",
-        "course":1.0,
+        "course":1,
         "type":"adjektiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "138":{
         "fi":"porkkana",
         "en":"carrot",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "139":{
         "fi":"postinumero",
         "en":"post code",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "140":{
         "fi":"puhelin",
         "en":"phone",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "141":{
         "fi":"puhua",
         "en":"speak",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "142":{
         "fi":"pulla",
         "en":"bun",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "143":{
         "fi":"puolukka",
         "en":"lingonberry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "144":{
         "fi":"puuroa",
         "en":"porridge",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "145":{
         "fi":"päiväys",
         "en":"date",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "146":{
         "fi":"päivää",
         "en":"afternoon",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "147":{
         "fi":"pääkaupunki",
         "en":"capital city;capital",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "148":{
         "fi":"päärynä",
         "en":"pear",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "149":{
         "fi":"rakastaa",
         "en":"love",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "150":{
         "fi":"ruoka",
         "en":"food",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "151":{
         "fi":"saari",
         "en":"island",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "152":{
         "fi":"sanoa",
         "en":"say",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "153":{
         "fi":"se",
         "en":"it",
-        "course":1.0,
+        "course":1,
         "type":"pronominit",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "154":{
         "fi":"sieni",
         "en":"mushroom",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "155":{
         "fi":"sinä;sä",
         "en":"you",
-        "course":1.0,
+        "course":1,
         "type":"pronominit",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "156":{
         "fi":"sipuli",
         "en":"onion",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "157":{
         "fi":"siviilisäty",
         "en":"marital status;marriage status",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "158":{
         "fi":"sopia",
         "en":"agree",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "159":{
         "fi":"suklaa",
         "en":"chocolate",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "160":{
         "fi":"sukunimi",
         "en":"last name;surname",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "161":{
         "fi":"suljettu",
         "en":"closed",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "162":{
         "fi":"sunnuntai",
         "en":"sunday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "163":{
         "fi":"syntymäaika;henkilötietona",
         "en":"birth date",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "164":{
         "fi":"syntymäpaikka",
         "en":"place of birth;birthplace",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"personal information",
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     },
     "165":{
         "fi":"syödä",
         "en":"eat",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":2.0
+        "subject_category":null,
+        "verb_type":2.0
     },
     "166":{
         "fi":"tarkoittaa",
         "en":"mean",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "167":{
         "fi":"tarvita",
         "en":"need",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "168":{
         "fi":"te",
         "en":"yall;you;youse;you plural",
-        "course":1.0,
+        "course":1,
         "type":"pronominit",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "169":{
         "fi":"teitää",
         "en":"know",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "170":{
         "fi":"tentti",
         "en":"exam",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "171":{
         "fi":"terveydeksi",
         "en":"bless you",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "172":{
         "fi":"tietokone",
         "en":"computer",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "173":{
         "fi":"tiistai",
         "en":"tuesday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "174":{
         "fi":"toimi",
         "en":"work;job;task",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "175":{
         "fi":"toistaa",
         "en":"repeat",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "176":{
         "fi":"torstai",
         "en":"thursday",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "177":{
         "fi":"tosi hyvää;todella hyvää",
         "en":"i'm very good;im very good",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "178":{
         "fi":"tulla",
         "en":"come",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "179":{
         "fi":"tuo;toi",
         "en":"that",
-        "course":1.0,
+        "course":1,
         "type":"idk",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "180":{
         "fi":"tuollainen;tollanen;tommonen;tommoinen",
         "en":"that kind of;like that;that sort of",
-        "course":1.0,
+        "course":1,
         "type":"idk",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "181":{
         "fi":"tutkia",
         "en":"research",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "182":{
         "fi":"tutkintoopiskelija",
         "en":"degree student",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "183":{
         "fi":"työ",
         "en":"work",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "184":{
         "fi":"tämä;täa",
         "en":"this",
-        "course":1.0,
+        "course":1,
         "type":"idk",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "185":{
         "fi":"tänään",
         "en":"today",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "186":{
         "fi":"tässä",
         "en":"here",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "187":{
         "fi":"täällä",
         "en":"for here",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "188":{
         "fi":"usein",
         "en":"often",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "189":{
         "fi":"uskaltaa",
         "en":"dare",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "190":{
         "fi":"uskoa",
         "en":"believe",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "191":{
         "fi":"vadelma",
         "en":"raspberry",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "192":{
         "fi":"vai;tai",
         "en":"or",
-        "course":1.0,
+        "course":1,
         "type":"idk",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "193":{
         "fi":"valkosipuli",
         "en":"garlic",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "194":{
         "fi":"vapaa",
         "en":"free",
-        "course":1.0,
+        "course":1,
         "type":"adjektiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "195":{
         "fi":"venäjä",
         "en":"russia",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "196":{
         "fi":"vesi",
         "en":"water",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "197":{
         "fi":"vessa",
         "en":"bathroom;toilet",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "198":{
         "fi":"vihannekset;kasvikset",
         "en":"vegetables;greens",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "199":{
         "fi":"viikonloppu",
         "en":"weekend",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "200":{
         "fi":"viinimarja",
         "en":"currant;blackcurrant",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "201":{
         "fi":"viinirypäle",
         "en":"grape",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"secondary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "202":{
         "fi":"voi",
         "en":"butter",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"food",
-        "verb type":null
+        "subject_category":"food",
+        "verb_type":null
     },
     "203":{
         "fi":"voi ei",
         "en":"oh no",
-        "course":1.0,
+        "course":1,
         "type":"phrase",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "204":{
         "fi":"vähän",
         "en":"little;few;a bit;a little",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "205":{
         "fi":"yleensä",
         "en":"usually",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":null
+        "subject_category":null,
+        "verb_type":null
     },
     "206":{
         "fi":"ylihuomenna",
         "en":"day after tomorrow",
-        "course":1.0,
+        "course":1,
         "type":"adverbi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "207":{
         "fi":"yliopisto",
         "en":"university",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"school",
-        "verb type":null
+        "subject_category":"school",
+        "verb_type":null
     },
     "208":{
         "fi":"ymmärtää",
         "en":"understand",
-        "course":1.0,
+        "course":1,
         "type":"verbi",
         "primary":"primary",
-        "subject category":null,
-        "verb type":1.0
+        "subject_category":null,
+        "verb_type":1.0
     },
     "209":{
         "fi":"yö",
         "en":"night",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"time",
-        "verb type":null
+        "subject_category":"time",
+        "verb_type":null
     },
     "210":{
         "fi":"äidinkieli",
         "en":"mother tounge;first language;native tounge;native language",
-        "course":1.0,
+        "course":1,
         "type":"substantiivi",
         "primary":"primary",
-        "subject category":"personal information",
-        "verb type":null
-    },
-    "211":{
-        "fi":null,
-        "en":null,
-        "course":null,
-        "type":null,
-        "primary":null,
-        "subject category":null,
-        "verb type":null
+        "subject_category":"personal information",
+        "verb_type":null
     }
 }

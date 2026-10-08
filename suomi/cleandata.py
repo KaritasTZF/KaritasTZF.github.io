@@ -7,7 +7,7 @@ df = pd.read_csv("suomi/vocab.csv",encoding='utf-8',index_col=0) #read from csv
 #df = pd.read_json("vocab.json",encoding='utf-8').T #read from json
 
 # -- data work
-df[['course','verb type']] = df[['course','verb type']].astype('Int64') #cast to null+int
+df[['course','verb_type']] = df[['course','verb_type']].astype('Int64') #cast to null+int
 df = df.map(lambda x: x.strip().lower() if isinstance(x, str) else x) # cast to lowercase, strip end spaces
 
 df = df[~df.duplicated(subset=['fi'],keep='first')] #toss duplicates
